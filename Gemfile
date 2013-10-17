@@ -2,7 +2,8 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.6'
 gem "heroku"
-
+gem "devise"
+gem "geocoder"
 
 group :development do
   gem 'debugger'
