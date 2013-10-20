@@ -4,8 +4,8 @@ describe Representation do
   context "accessibility" do
     it { should allow_mass_assignment_of :start_date }
     it { should allow_mass_assignment_of :end_date }
-    it { should allow_mass_assignment_of :person_id }
-    it { should allow_mass_assignment_of :represented_id }
+    it { should allow_mass_assignment_of :representative }
+    it { should allow_mass_assignment_of :representee }
     it { should_not allow_mass_assignment_of :id }
   end
 

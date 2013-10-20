@@ -1,0 +1,12 @@
+%tr
+  %td
+    %a{href: "#{admin_person_path(person)}"} 
+      = person.name
+  %td
+    = person.blurb
+  %td
+    = person.roles.map { |role| role.name }.join(", ")
+  %td
+    = link_to "Edit", edit_admin_person_path(person)
+  %td
+    = link_to "Delete", admin_person_path(person), confirm: "Are you sure?", method: :delete

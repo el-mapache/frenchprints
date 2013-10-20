@@ -1,0 +1,34 @@
+.span6
+  = form_for [:admin, @person] do |f|
+    .control-group
+      = f.label :name, class: "control-label"
+      .controls
+        = f.text_field :name, class: "span4"
+
+    .control-group
+      = f.label :blurb, class: "control-label"
+      %b (optional, 140 character limit)
+      .controls
+        = f.text_area :blurb, class: "span4", size: "3x3"
+
+    .control-group
+      = f.label :bio, class: "control-label"
+      %b (optional)
+      .controls
+        = f.text_area :bio, class: "span5", size: "14x10"
+    
+    .control-group
+      = f.label :roles, class: "control-label"
+      .controls
+        %b 
+          Add additional roles here
+        %ul
+          - Role.all.each do |role|
+            %li
+              = check_box_tag "person[role_ids][]", role.id, @person.roles.include?(role)
+              = role.name
+    %br 
+    .control-group
+      .controls
+        = f.submit "Submit", class: "btn btn-primary"
+

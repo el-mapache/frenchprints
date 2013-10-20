@@ -1,0 +1,9 @@
+.flashes.row
+  - flash.each do |name, msg|
+    %div{class: "alert alert-#{name == :notice ? "success" : "error"}"}
+      %a.close{data: {:dismiss => "alert"}} ×
+      - if msg.kind_of? Array
+        - msg.each do |m|
+          = m.html_safe
+      - else
+        = msg.html_safe

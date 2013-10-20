@@ -1,0 +1,27 @@
+.span6
+  = form_for [:admin, @artworks] do |f|
+    .control-group
+      = f.label :title, class: "control-label
+    .controls
+      = f.text_field :title, class: "span4"
+
+    .control-group
+      = f.label :medium, class: "control-label
+    .controls
+      = f.text_field :medium, class: "span4"
+
+    .control-group
+      = f.label :dimensions, class: "control-label
+    .controls
+      = f.text_field :dimensions, class: "span4"
+
+    .control-group
+      = f.label :release_date, class: "control-label
+    .controls
+      = f.text_field :release_date, class: "span4"
+
+    %br 
+    .control-group
+      .controls
+        = f.submit "Submit", class: "btn btn-primary"
+

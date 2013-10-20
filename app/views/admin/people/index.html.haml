@@ -1,0 +1,20 @@
+.row
+  %h2 Emminent Personages
+  .row
+    %div.span2
+      = link_to "Add a person", new_admin_person_path, class: "btn btn-primary"
+  .row
+    %br
+    %br
+    %br
+    %table.table.table-bordered.table-striped.table-hover.span6
+      %thead
+        %tr
+          %th Name
+          %th Blurb
+          %th Roles
+          %th Edit
+          %th Delete
+      %tbody
+        - @people.each do |person|
+          = render "person", person: person

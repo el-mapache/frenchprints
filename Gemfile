@@ -7,7 +7,8 @@ gem "geocoder"
 
 group :development do
   gem 'debugger'
-  gem "better_errors"
+  #gem "better_errors"
+  gem 'thin'
 end
 
 group :test do
@@ -24,10 +25,10 @@ group :production do
   gem 'pg'
 end
 
-
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
+  gem "twitter-bootstrap-rails"
   gem 'sass-rails',   '~> 3.2.3'
   gem "haml-rails"
   gem 'uglifier', '>= 1.0.3'

@@ -1,0 +1,5 @@
+%h2
+  = @person.name
+= link_to "Back", admin_person_path
+- @person.roles.each do |role|
+  = render "application/roles/#{role.name.downcase.to_s}" rescue nil

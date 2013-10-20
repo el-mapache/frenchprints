@@ -6,5 +6,5 @@ class Artwork < ActiveRecord::Base
   validates :title, presence: true
   validates :medium, presence: true
   validates :release_date, presence: true
-  validates :artist_id, presence: true
+  validates :artist_id, presence: true, numericality: true
 end
