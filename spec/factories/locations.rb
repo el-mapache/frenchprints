@@ -4,11 +4,11 @@ FactoryGirl.define do
   factory :location do
     start_date "2013-10-18"
     end_date "2013-10-18"
-    city "MyString"
-    country "MyString"
-    country_code "MyString"
-    street_address "MyString"
-    latitude "MyString"
-    longitude "MyString"
+    city "Cleveland"
+    country "United States"
+    country_code "US"
+    street_address "1929 W Larchmere"
+    latitude ""
+    longitude ""
   end
 end
