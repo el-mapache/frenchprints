@@ -18,8 +18,6 @@ class Person < ActiveRecord::Base
   validates :name, presence: true, uniqueness: true
   validates :blurb, length: { maximum: 140 }
 
-  after_create :add_default_events
-
   class << self
     def all_with_roles
       Person.includes(:roles).all
@@ -83,13 +81,6 @@ class Person < ActiveRecord::Base
   private
   def validates_role(role)
     raise ActiveRecord::Rollback if self.roles.include? role
-  end
-
-  # Create a pair of birth and death records
-  def add_default_events
-    locations.create(event_name: "birth")
-    locations.create(event_name: "death")
-    save
   end
 end
 

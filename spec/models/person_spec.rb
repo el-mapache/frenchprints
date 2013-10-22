@@ -33,13 +33,25 @@ describe Person do
         create(:person).representees.should eql([])
       end
     end
-  end
-  
-  describe "after save" do
-    it "creates a pair of location records" do
-      Person.delete_all
-      person = create(:person)
-      person.locations.count.should be (2)
+
+    context "locations" do
+      it "destroys associated locations when deleted" do
+        person = create(:person)
+        location = person.locations.create(FactoryGirl.attributes_for :location)
+        lambda do
+          person.delete
+        end.should change(Location, :count).by(-1)
+      end
+    end
+
+    context "artwork" do
+      it "destroys associated artworks when deleted" do
+        person = create(:person)
+        location = person.add_artwork(FactoryGirl.attributes_for :artwork)
+        lambda do
+          person.delete
+        end.should change(Artwork, :count).by(-1)
+      end
     end
   end
 

@@ -21,6 +21,15 @@ describe Location do
   end
 
   context "validations" do
+    it { should validate_presence_of :event_name }
+    it { should validate_presence_of :start_date }
+
+    it "scopes association uniquness to lat, lng, start_date, and name" do
+      some_person = create(:person)
+      location = some_person.locations
+                            .create(FactoryGirl.attributes_for :location)
+      expect { some_person.create(FactoryGirl.attributes_for :location) }.to raise_error
+    end
   end
   
   describe "instantiation" do

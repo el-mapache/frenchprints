@@ -8,8 +8,8 @@ FactoryGirl.define do
     country "United States"
     country_code "US"
     street_address "1929 W. Larchmere"
-    latitude ""
-    longitude ""
+    latitude "34.098746"
+    longitude "-120.00000"
     event_name "partaaay"
   end
 end
