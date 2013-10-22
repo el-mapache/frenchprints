@@ -1,5 +1,5 @@
 class Admin::PeopleController < Admin::AdminController
-  before_filter :get_person, only: [:show, :edit, :create, :update, :destroy]
+  before_filter :get_person, only: [:show, :edit, :update, :destroy]
 
   def index
     @people = Person.all_with_roles
@@ -7,6 +7,8 @@ class Admin::PeopleController < Admin::AdminController
 
   def new
     @person = Person.new
+    @birth = @person.locations.build(event_name: "birth")
+    @death = @person.locations.build(event_name: "death")
   end
 
   def show
@@ -28,10 +30,8 @@ class Admin::PeopleController < Admin::AdminController
   end
 
   def update
-    @person.update_attributes(params[:person])
-
     respond_to do |f|
-      if @person.save
+      if @person.update_attributes(params[:person])
         f.html { redirect_to admin_people_path, notice: "Record successfully updated."}
         f.json {}
       else
@@ -56,3 +56,4 @@ class Admin::PeopleController < Admin::AdminController
     @person = Person.find(params[:id])
   end
 end
+

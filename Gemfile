@@ -4,6 +4,7 @@ gem 'rails', '3.2.6'
 gem "heroku"
 gem "devise"
 gem "geocoder"
+gem "carrierwave"
 
 group :development do
   gem 'debugger'

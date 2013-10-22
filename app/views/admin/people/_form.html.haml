@@ -3,30 +3,38 @@
     .control-group
       = f.label :name, class: "control-label"
       .controls
-        = f.text_field :name, class: "span4"
+        = f.text_field :name, class: "span4", placeholder: "Pierre Boulez"
 
     .control-group
       = f.label :blurb, class: "control-label"
-      %b (optional, 140 character limit)
+      %em (optional, 140 character limit)
       .controls
-        = f.text_area :blurb, class: "span4", size: "3x3"
+        = f.text_area :blurb, class: "span4", size: "3x3", placeholder: "Composer, diletante"
 
     .control-group
       = f.label :bio, class: "control-label"
-      %b (optional)
+      %em (optional)
       .controls
-        = f.text_area :bio, class: "span5", size: "14x10"
-    
+        = f.text_area :bio, class: "span5", size: "14x10", placeholder: "Born in a small cave on the banks of the river seine, blah blah....and so forth"
+
     .control-group
       = f.label :roles, class: "control-label"
       .controls
-        %b 
+        %em
           Add additional roles here
         %ul
           - Role.all.each do |role|
             %li
               = check_box_tag "person[role_ids][]", role.id, @person.roles.include?(role)
               = role.name
+    %hr
+    %div
+      %h4 Locations and Event
+      .control-group.info
+        %em.help-inline
+          You may add more events after saving this record.
+      = f.fields_for :locations do |builder|
+        = render "admin/partials/location", f: builder
     %br 
     .control-group
       .controls

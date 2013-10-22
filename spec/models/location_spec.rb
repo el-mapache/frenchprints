@@ -12,21 +12,20 @@ describe Location do
     it { should allow_mass_assignment_of :street_address }
     it { should allow_mass_assignment_of :state }
     it { should allow_mass_assignment_of :province }
+    it { should allow_mass_assignment_of :event_name }
+    it { should_not allow_mass_assignment_of :id }
   end
 
   context "associations" do
-    it { should have_many(:location_events) }
+    it { should belong_to(:locatable) }
   end
 
   context "validations" do
-    it { should validate_presence_of :start_date }
-    it { should validate_presence_of :end_date }
-    it { should validate_presence_of :country }
   end
   
   describe "instantiation" do
     it "geocodes the lat/lng on successful validation" do
-      location = create(:location)
+      location = create(:person).locations.create(FactoryGirl.attributes_for :location)
       location.latitude.should_not be_nil
       location.longitude.should_not be_nil
     end
@@ -34,8 +33,8 @@ describe Location do
 
   describe "#full_address" do
     it "creates a string representation of a location" do
-      location = create(:location)
-      location.full_address.should eql("1929 W Larchmere, Cleveland, United States")
+      location = create(:person).locations.create(FactoryGirl.attributes_for :location)
+      location.full_address.should eql("1929 W. Larchmere, Cleveland, United States")
     end
   end
 end

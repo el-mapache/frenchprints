@@ -6,6 +6,7 @@ describe Person do
     it { should allow_mass_assignment_of :bio }
     it { should allow_mass_assignment_of :blurb }
     it { should allow_mass_assignment_of :role_ids }
+    it { should allow_mass_assignment_of :locations_attributes }
     it { should_not allow_mass_assignment_of :id }
   end
 
@@ -17,9 +18,11 @@ describe Person do
 
   context "associations" do
     it { should have_and_belong_to_many :roles }
+    it { should accept_nested_attributes_for :roles }
     it { should have_many :representations }
     it { should have_many :artworks }
-    it { should accept_nested_attributes_for :roles }
+    it { should have_many :locations }
+    it { should accept_nested_attributes_for :locations }
 
     context "representations" do
       # A representee is defined as an instance of Person
@@ -32,6 +35,13 @@ describe Person do
     end
   end
 
+  describe "after save" do
+    it "creates a pair of location records" do
+      Person.delete_all
+      person = create(:person)
+      person.locations.count.should be (2)
+    end
+  end
 
   context "instance methods" do
     before :each do
@@ -107,11 +117,11 @@ describe Person do
         it "fetches all representatives for a given person" do
           dealer.represent(painter, Date.yesterday, Date.tomorrow) 
           sothebys.represent(painter, Date.yesterday, Date.tomorrow) 
-          painter.representatives.count.should be(2)
+          painter.representative.count.should be(2)
         end
 
         it "returns an empty array if there are no representatives" do
-          dealer.representatives.should be_empty
+          dealer.representative.should be_empty
         end
       end
 
@@ -124,13 +134,13 @@ describe Person do
       end
 
 
-      describe "#was_represented_during" do
-        it "gets all representatives for an artist in a given timeframe" do
-          dealer.represent(painter, Date.yesterday, Date.tomorrow) 
-          sothebys.represent(painter, 10.days.ago.to_date, 1.year.from_now.to_date) 
-          painter.was_represented_during(Date.yesterday, Date.tomorrow).count.should be(1)
-        end
-      end
+      #describe "#was_represented_during" do
+      #  it "gets all representatives for an artist in a given timeframe" do
+      #    dealer.represent(painter, Date.yesterday, Date.tomorrow) 
+      #    sothebys.represent(painter, 10.days.ago.to_date, 1.year.from_now.to_date) 
+      #    painter.was_represented_during(Date.yesterday, Date.tomorrow).count.should be(1)
+      #  end
+      #end
     end
   end
 end
