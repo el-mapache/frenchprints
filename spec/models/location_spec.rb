@@ -24,6 +24,10 @@ describe Location do
   end
   
   describe "instantiation" do
+    it "is not valid without an association" do
+      expect { create(:location) }.to raise_error
+    end
+
     it "geocodes the lat/lng on successful validation" do
       location = create(:person).locations.create(FactoryGirl.attributes_for :location)
       location.latitude.should_not be_nil

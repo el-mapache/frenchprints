@@ -34,7 +34,7 @@ describe Person do
       end
     end
   end
-
+  
   describe "after save" do
     it "creates a pair of location records" do
       Person.delete_all

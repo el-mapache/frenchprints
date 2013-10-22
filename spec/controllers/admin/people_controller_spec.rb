@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Admin::PeopleController do
-  login_admin
+  login_admin 
 
   describe "'index'" do
     it "returns http success" do

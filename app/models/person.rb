@@ -71,11 +71,11 @@ class Person < ActiveRecord::Base
   def has_role?(role)
     !roles.where(name: role).empty?
   end
-
+  
   def birth
     locations.where(event_name: "birth")
   end
-
+  
   def death
     locations.where(event_name: "death")
   end

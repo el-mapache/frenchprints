@@ -8,7 +8,7 @@ class Location < ActiveRecord::Base
   validates :event_name, :start_date, presence: true
 
   validates :locatable_id, uniqueness: {
-    scope: [:latitude, :longitude, :start_date, :end_date, :event_name]
+    scope: [:latitude, :longitude, :start_date, :end_date, :event_name] 
   }
 
 
