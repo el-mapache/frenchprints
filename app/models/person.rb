@@ -71,11 +71,11 @@ class Person < ActiveRecord::Base
   end
   
   def birth
-    locations.where(event_name: "birth")
+    locations.where(event_name: "birth").first
   end
   
   def death
-    locations.where(event_name: "death")
+    locations.where(event_name: "death").first
   end
 
   private

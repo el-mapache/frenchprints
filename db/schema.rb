@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131022013347) do
+ActiveRecord::Schema.define(:version => 20131023160327) do
 
   create_table "artworks", :force => true do |t|
     t.string   "title"
@@ -21,6 +21,13 @@ ActiveRecord::Schema.define(:version => 20131022013347) do
     t.integer  "artist_id"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+  end
+
+  create_table "journals", :force => true do |t|
+    t.string   "title"
+    t.string   "publication_run"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   create_table "locations", :force => true do |t|
@@ -55,6 +62,17 @@ ActiveRecord::Schema.define(:version => 20131022013347) do
   end
 
   add_index "people_roles", ["person_id", "role_id"], :name => "by_person_and_role", :unique => true
+
+  create_table "personnel_locations", :force => true do |t|
+    t.integer  "location_id"
+    t.integer  "person_id"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.integer  "trackable_id"
+    t.string   "trackable_type"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
 
   create_table "representations", :force => true do |t|
     t.date     "start_date"

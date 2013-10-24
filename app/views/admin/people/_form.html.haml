@@ -40,3 +40,12 @@
       .controls
         = f.submit "Submit", class: "btn btn-primary"
 
+- content_for :javascripts do
+  :javascript
+    $(document).ready(function() {
+      $startDates = $("input.start-date");
+      $endDates = $("input.end-date");
+
+      $startDates.datepicker();
+      $endDates.datepicker();
+    });
