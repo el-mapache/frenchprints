@@ -63,8 +63,7 @@ ActiveRecord::Schema.define(:version => 20131023160327) do
 
   add_index "people_roles", ["person_id", "role_id"], :name => "by_person_and_role", :unique => true
 
-  create_table "personnel_locations", :force => true do |t|
-    t.integer  "location_id"
+  create_table "personnel_histories", :force => true do |t|
     t.integer  "person_id"
     t.date     "start_date"
     t.date     "end_date"

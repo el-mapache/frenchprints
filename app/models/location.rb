@@ -5,6 +5,8 @@ class Location < ActiveRecord::Base
 
   belongs_to :locatable, polymorphic: true
 
+  has_many :personnel_locations
+
   validates :event_name, :start_date, presence: true
 
   validates :locatable_id, uniqueness: {
