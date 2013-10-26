@@ -39,7 +39,7 @@ describe Person do
         person = create(:person)
         location = person.locations.create(FactoryGirl.attributes_for :location)
         lambda do
-          person.delete
+          person.destroy
         end.should change(Location, :count).by(-1)
       end
     end
@@ -47,9 +47,10 @@ describe Person do
     context "artwork" do
       it "destroys associated artworks when deleted" do
         person = create(:person)
-        location = person.add_artwork(FactoryGirl.attributes_for :artwork)
+        person.add_role("Artist")
+        artwork = person.add_artwork(FactoryGirl.attributes_for :artwork)
         lambda do
-          person.delete
+          person.destroy
         end.should change(Artwork, :count).by(-1)
       end
     end

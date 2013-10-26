@@ -1,0 +1,5 @@
+.span6
+  = form_for [:admin, @journal] do |f|
+    = control_group(f, :text_field, :title, {class: "span4"})
+    = control_group(f, :text_field, :publication_run, {class: "span4"})
+    = f.submit "Save", class: "btn btn-primary"

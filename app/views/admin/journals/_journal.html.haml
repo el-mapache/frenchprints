@@ -1,0 +1,10 @@
+%tr
+  %td
+    %a{href: "#{admin_journal_path(journal)}"} 
+      = journal.title
+  %td
+    = journal.publication_run
+  %td
+    = link_to "Edit", edit_admin_journal_path(journal)
+  %td
+    = link_to "Delete", admin_journal_path(journal), confirm: "Are you sure?", method: :delete
