@@ -27,21 +27,17 @@ class Person < ActiveRecord::Base
     def all_with_roles
       Person.includes(:roles).all
     end
-
-    def all_with_attribute(attr)
-      Person.select(attr).all.map { |p| p[attr] }
-    end
   end
 
   def sex_from_code
     case sex
-      when "M" 
+      when "M"
         "Male"
-      when "F" 
+      when "F"
         "Female"
-      when "U" 
+      when "U"
         "Unknown"
-      when "O" 
+      when "O"
         "Other"
     end
   end
