@@ -1,0 +1,21 @@
+.row
+  %h2 Personnel Records
+
+  .row
+    %div.span2
+      = link_to "Add a record", new_admin_journal_personnel_history_path, class: "btn btn-primary"
+  .row
+    %br
+    %br
+    %br
+    %table.table.table-bordered.table-striped.table-hover.span6
+      %thead
+        %tr
+          %th Person
+          %th Start Date
+          %th End Date
+          %th Edit
+          %th Delete
+      %tbody
+        - @records.each do |record|
+          = render "record", record: record

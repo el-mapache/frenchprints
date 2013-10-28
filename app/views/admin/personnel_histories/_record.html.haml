@@ -1,0 +1,12 @@
+%tr
+  %td
+    %a{href: "#{admin_journal_personnel_history_path(record)}"} 
+      = record.person.name
+  %td
+    = record.start_date
+  %td
+    = record.end_date
+  %td
+    = link_to "Edit", edit_admin_journal_personnel_history_path(record)
+  %td
+    = link_to "Delete", admin_journal_personnel_history_path(record), confirm: "Are you sure?", method: :delete

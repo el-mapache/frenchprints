@@ -9,6 +9,8 @@ FrenchPrint::Application.routes.draw do
       resources :artworks
     end
 
-    resources :journals
+    resources :journals do
+      resources :personnel_histories
+    end
   end
 end

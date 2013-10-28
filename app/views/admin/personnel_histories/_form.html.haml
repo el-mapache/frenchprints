@@ -1,0 +1,33 @@
+= render_errors(@record)
+
+.row
+  .span8.well
+    = form_for [:admin, @journal, @record] do |f|
+
+      .control-group
+        = f.label :person_id
+        .controls
+          = f.select :person_id, options_for_select(Person.all.map { |p| [p.name, p.id] }),{include_blank: ""}
+
+      .control-group
+        = f.label :location_id
+        .controls
+          = f.select :location_id, options_for_select(Location.all.map { |l| [l.full_address, l.id] }), {include_blank: ""}
+
+      = render "admin/partials/date_picker", f: f, attr: "start_date"
+      = render "admin/partials/date_picker", f: f, attr: "end_date"
+
+      %br 
+      .control-group
+        .controls
+          = f.submit "Submit", class: "btn btn-primary"
+
+- content_for :javascripts do
+  :javascript
+    $(document).ready(function() {
+      $startDates = $("input.start-date");
+      $endDates = $("input.end-date");
+
+      $startDates.datepicker();
+      $endDates.datepicker();
+    });

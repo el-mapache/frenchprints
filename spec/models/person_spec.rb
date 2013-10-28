@@ -5,6 +5,7 @@ describe Person do
     it { should allow_mass_assignment_of :name }
     it { should allow_mass_assignment_of :bio }
     it { should allow_mass_assignment_of :blurb }
+    it { should allow_mass_assignment_of :sex }
     it { should allow_mass_assignment_of :role_ids }
     it { should allow_mass_assignment_of :locations_attributes }
     it { should_not allow_mass_assignment_of :id }
@@ -14,6 +15,8 @@ describe Person do
     it { should validate_presence_of :name }
     it { should validate_uniqueness_of :name }
     it { should ensure_length_of(:blurb).is_at_most(140) }
+    it { should allow_value(/M|F|U|O/).for(:sex) }
+    it { should allow_value("Male").for(:sex) }
   end
 
   context "associations" do
@@ -60,6 +63,21 @@ describe Person do
     before :each do
       Person.delete_all
       @person ||= create(:person)
+    end
+    
+    describe "#has_role?" do
+      it "returns a boolean if the user has a specified role" do
+        @person.add_role("Artist")
+        @person.has_role?("Lion Tamer").should eql(false)
+        @person.has_role?("Artist").should eql(true)
+      end
+    end
+
+    describe "#sex_from_code" do
+      it "returns a humanized string of the sex code on the model" do
+        @person.update_attribute(:sex, "M")
+        @person.sex_from_code.should eql("Male")
+      end
     end
 
     describe "#add_role" do
@@ -120,7 +138,7 @@ describe Person do
         @person.artworks.count.should be(1)
       end
     end
-
+  
     context "Representative/ee finder methods" do
       let(:dealer) { create(:dealer) }
       let(:painter) { create(:artist) }

@@ -1,5 +1,6 @@
 class Person < ActiveRecord::Base
-  attr_accessible :bio, :name, :blurb, :role_ids, :locations_attributes
+  attr_accessible :bio, :name, :blurb, :role_ids, :locations_attributes,
+                  :sex
   
   # Associations
   has_many :representations, dependent: :destroy
@@ -17,13 +18,34 @@ class Person < ActiveRecord::Base
   # Validations
   validates :name, presence: true, uniqueness: true
   validates :blurb, length: { maximum: 140 }
+  validates :sex, format: {
+    with: /(M|F|U|O)/,
+    message: "Invalid gender assignment."
+  }
 
   class << self
     def all_with_roles
       Person.includes(:roles).all
     end
+
+    def all_with_attribute(attr)
+      Person.select(attr).all.map { |p| p[attr] }
+    end
   end
 
+  def sex_from_code
+    case sex
+      when "M" 
+        "Male"
+      when "F" 
+        "Female"
+      when "U" 
+        "Unknown"
+      when "O" 
+        "Other"
+    end
+  end
+  
   # For whatever reason this finder wasnt working by default
   def representative
     Person.find_by_sql(["SELECT `people`.* FROM `people` INNER JOIN `representations` ON `people`.`id` = `representations`.`person_id` WHERE `representations`.`represented_id` = ?", id])
@@ -50,7 +72,7 @@ class Person < ActiveRecord::Base
     save
   end
 
-  # These two methods provide date based searching
+  # This method provides date based searching
 
   # See all of a dealers representees during a specific timeframe
   def representees_during(from, to)

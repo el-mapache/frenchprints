@@ -1,26 +1,14 @@
 .row
-  .span6
+  %fieldset.span8.well
     .control-group
       = f.label :event_name
       %em Should be something short and descriptive, i.e. "death".
       .controls
         = f.text_field :event_name
 
-    .control-group
-      = f.label :start_date
-      .controls
-        .input-append.date
-          = f.text_field :start_date, data: {plugin: "datepicker", date: "01-01-1880", :"date-viewmode" => "years", :"date-format" => "dd/mm/yyyy"}, class: "span2 start-date"
-          %span.add-on
-            %i.icon-calender
-    .control-group
-      = f.label :end_date
-      %em This field is not always applicable, such as when recording a death.
-      .controls
-        .input-append.date
-          = f.text_field :start_date, data: {plugin: "datepicker", date: "01-01-1880", :"date-viewmode" => "years", :"date-format" => "dd/mm/yyyy"}, class: "span2 end-date"
-          %span.add-on
-            %i.icon-calender
+    = render "admin/partials/date_picker", f: f, attr: "start_date"
+    = render "admin/partials/date_picker", f: f, attr: "end_date"
+
     .control-group
       = f.label :street_address
       .controls

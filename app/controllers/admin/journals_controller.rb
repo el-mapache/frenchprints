@@ -1,10 +1,8 @@
 class Admin::JournalsController < Admin::CrudController
   def index
-    @journals = Journal.all
   end
 
   def new
-    @journal = Journal.new
   end
 
   def show
@@ -15,8 +13,6 @@ class Admin::JournalsController < Admin::CrudController
   end
 
   def create
-    @journal = Journal.new(params[:journal])
-
     respond_to do |f|
       if @journal.save
         f.html { redirect_to admin_journals_path, notice: "Resource successfully saved." }
@@ -27,7 +23,6 @@ class Admin::JournalsController < Admin::CrudController
   end
 
   def update
-
   end
 
   def destroy

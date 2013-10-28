@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131023160327) do
+ActiveRecord::Schema.define(:version => 20131027223749) do
 
   create_table "artworks", :force => true do |t|
     t.string   "title"
@@ -51,9 +51,10 @@ ActiveRecord::Schema.define(:version => 20131023160327) do
   create_table "people", :force => true do |t|
     t.string   "name"
     t.text     "bio"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
     t.string   "blurb"
+    t.string   "sex",        :default => "U", :null => false
   end
 
   create_table "people_roles", :force => true do |t|
@@ -71,6 +72,7 @@ ActiveRecord::Schema.define(:version => 20131023160327) do
     t.string   "trackable_type"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+    t.integer  "location_id",    :null => false
   end
 
   create_table "representations", :force => true do |t|

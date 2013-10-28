@@ -1,5 +1,8 @@
-.span6
-  = form_for [:admin, @artworks] do |f|
+= render_errors(@artwork)
+
+.span8.well
+  = form_for [:admin, @artwork] do |f|
+
     .control-group
       = f.label :title, class: "control-label
     .controls

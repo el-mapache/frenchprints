@@ -1,12 +1,11 @@
-class Admin::PeopleController < Admin::AdminController
-  before_filter :get_person, only: [:show, :edit, :update, :destroy]
+class Admin::PeopleController < Admin::CrudController
+  skip_before_filter :get_all
 
   def index
     @people = Person.all_with_roles
   end
 
   def new
-    @person = Person.new
     @birth = @person.locations.build(event_name: "birth")
     @death = @person.locations.build(event_name: "death")
   end
@@ -15,8 +14,6 @@ class Admin::PeopleController < Admin::AdminController
   end
 
   def create
-    @person = Person.new(params[:person])
-
     respond_to do |f|
       if @person.save
         f.html { redirect_to admin_people_path, notice: "Record successfully added" }
@@ -49,11 +46,6 @@ class Admin::PeopleController < Admin::AdminController
         f.html { redirect_to :back, error: "Something went wrong." }
       end
     end
-  end
-
-  private
-  def get_person
-    @person = Person.find(params[:id])
   end
 end
 

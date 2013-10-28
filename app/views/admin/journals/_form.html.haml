@@ -1,5 +1,23 @@
-.span6
+= render_errors(@journal)
+
+.span8.well
   = form_for [:admin, @journal] do |f|
+
     = control_group(f, :text_field, :title, {class: "span4"})
     = control_group(f, :text_field, :publication_run, {class: "span4"})
+
+    - unless @journal.locations.empty?
+      = f.fields_for @journal.locations do |builder| 
+        = render "admin/partials/location_fields", f: builder
+    - unless @journal.new_record?
+      .control-group
+        = link_to_add_fields("Add location", f, :locations)
+
+    - if @journal.new_record?
+      %h5 You can associate personnel with this publication after saving.
+    - else
+      %div
+        = link_to "View/Edit Personnel History", admin_journal_personnel_histories_path(@journal)
+
     = f.submit "Save", class: "btn btn-primary"
+
