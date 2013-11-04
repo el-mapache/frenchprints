@@ -1,6 +1,6 @@
 = render_errors(@person)
 
-.span8.well
+.span10.well
   = form_for [:admin, @person] do |f|
 
     = control_group(f, :text_field, :name, {class: "span4", placeholder: "Pierre Boulez"})
@@ -25,13 +25,21 @@
               = role.name
     %hr
     %div
-      %h4 Locations and Event
+      %h4 Locations and Events
       .control-group.info
-        %em.help-inline
-          You may add more events after saving this record.
+        - if @person.new_record?
+          %em.help-inline
+            You may add more events after saving this record.
       = f.fields_for :locations do |builder|
         = render "admin/partials/location_fields", f: builder
-        = link_to_add_fields("Add Location", f, :locations) unless @person.new_record?
+ 
+      = link_to_add_fields("Add Location", f, :locations) unless @person.new_record?
+
+    - if !@person.new_record? && @person.all_roles.include?("Writer")
+      %hr
+      %div
+        = link_to "Add an article", new_admin_person_article_path(@person)
+
     %br 
     .control-group
       .controls

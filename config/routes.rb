@@ -1,4 +1,5 @@
 FrenchPrint::Application.routes.draw do
+
   devise_for :users, :controllers => {:registrations => "users/registrations"}
 
   root to: "application_controller#index"
@@ -7,8 +8,10 @@ FrenchPrint::Application.routes.draw do
     resources :people do
       resources :roles
       resources :artworks
+      resources :articles, only: [:new, :edit, :create, :update]
     end
-
+    
+    resources :articles, only: [:index, :destroy]
     resources :journals do
       resources :personnel_histories
     end

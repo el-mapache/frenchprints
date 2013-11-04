@@ -110,6 +110,7 @@ describe Admin::PeopleController do
         it "properly saves roles" do
           person = assigns(:person)
           person.roles.should_not be_nil
+          person.roles.map { |r| r.name }.should include("Great Guy")
         end
 
         it "displays a flash message on success" do

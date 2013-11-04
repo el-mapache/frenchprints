@@ -1,0 +1,21 @@
+.row
+  %h2 Articles
+  %em New articles can be added through a person record.
+  .row
+    %br
+    %br
+    %br
+    %table.table.table-bordered.table-striped.table-hover.span10
+      %thead
+        %tr
+          %th Title
+          %th Author
+          %th Date Published
+          %th Pages
+          %th Journal Appeared In
+          %th Issue Number
+          %th Edit
+          %th Delete
+      %tbody
+        - @articles.each do |article|
+          = render "article", article: article

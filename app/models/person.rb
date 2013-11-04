@@ -14,6 +14,9 @@ class Person < ActiveRecord::Base
 
   has_many :locations, as: :locatable, dependent: :destroy
   accepts_nested_attributes_for :locations
+  
+  has_many :authors_articles
+  has_many :articles, through: :authors_articles
 
   # Validations
   validates :name, presence: true, uniqueness: true
@@ -51,6 +54,10 @@ class Person < ActiveRecord::Base
   def add_role name
     roles << Role.where(name: name).first_or_create
     save
+  end
+  
+  def all_roles 
+    roles.map { |role| role.name }
   end
 
   # Add a new representation between dealer and artist

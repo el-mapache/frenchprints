@@ -1,0 +1,17 @@
+%tr
+  %td
+    = link_to "#{article.title}", admin_article_path(article)
+  %td
+    = article.authors.first.name
+  %td
+    = article.date_published
+  %td
+    = article.pages
+  %td
+    = article.journal.title
+  %td
+    = article.authors_articles.first.issue_number
+  %td
+    = link_to "Edit", edit_admin_person_article_path(article.authors.first, article)
+  %td
+    = link_to "Delete", admin_article_path(article), confirm: "Are you sure?", method: :delete

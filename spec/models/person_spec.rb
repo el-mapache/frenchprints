@@ -26,7 +26,8 @@ describe Person do
     it { should have_many :artworks }
     it { should have_many :locations }
     it { should accept_nested_attributes_for :locations }
-
+    it { should have_many :authors_articles }
+    it { should have_many(:articles).through(:authors_articles) }
     context "representations" do
       # A representee is defined as an instance of Person
       # who is an artist and is associated with a dealer

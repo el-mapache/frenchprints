@@ -8,6 +8,8 @@ class Journal < ActiveRecord::Base
   has_many :personnel_histories, as: :trackable, dependent: :destroy
   accepts_nested_attributes_for :personnel_histories
 
+  has_many :articles
+
   validates :title, presence: true
 
   class << self
