@@ -65,7 +65,13 @@ describe Person do
       Person.delete_all
       @person ||= create(:person)
     end
-    
+
+    describe "#all_roles" do
+      it "returns an array with the names of all the associated roles" do
+        @person.all_roles.kind_of?(Array).should eq(true)
+      end
+    end
+
     describe "#has_role?" do
       it "returns a boolean if the user has a specified role" do
         @person.add_role("Artist")

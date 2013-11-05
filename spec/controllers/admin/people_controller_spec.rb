@@ -136,7 +136,7 @@ describe Admin::PeopleController do
         @person ||= create(:person)
       end
 
-      describe "'edit'" do
+      describe "#edit" do
         it "returns http success" do
           get "edit", id: @person
           response.should be_success
@@ -149,7 +149,7 @@ describe Admin::PeopleController do
         end
       end
 
-      describe "'update'" do
+      describe "#update" do
         context "success" do
           it "updates the resource" do
             put 'update', id: @person, person: { name: "Bill Belamy" }

@@ -15,7 +15,7 @@ class Person < ActiveRecord::Base
   has_many :locations, as: :locatable, dependent: :destroy
   accepts_nested_attributes_for :locations
   
-  has_many :authors_articles
+  has_many :authors_articles, dependent: :destroy
   has_many :articles, through: :authors_articles
 
   # Validations
@@ -29,6 +29,10 @@ class Person < ActiveRecord::Base
   class << self
     def all_with_roles
       Person.includes(:roles).all
+    end
+
+    def all_with_role(role)
+      Person.joins(:roles).where("roles.name = ?", role)
     end
   end
 

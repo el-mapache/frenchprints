@@ -1,2 +1,7 @@
-%h1 Admin::Articles#new
-%p Find me in app/views/admin/articles/new.html.haml
+.row
+  %h2 Create New Article
+  = link_to "Back", admin_articles_path, class: "btn"
+  %br
+  %br
+  .row
+    = render "form"

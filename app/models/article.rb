@@ -1,6 +1,6 @@
 class Article < ActiveRecord::Base
-  attr_accessible :date_published, :journal_id, :pages, :title, 
-                  :authors_articles_attributes
+  attr_accessible :date_published, :journal, :pages, :title,
+                  :authors_articles_attributes, :issue_number
 
   # Currently there is a one to one relationship with a journal,
   # and the issue number appears on the authors_articles join table.
@@ -11,11 +11,25 @@ class Article < ActiveRecord::Base
   # Alternate schema has an additional join table between journals and articles,
   # with a has and belongs to many relationship.  The issue number could then
   # live there.
-  belongs_to :journal
+  belongs_to :journal, foreign_key: :journal_id
 
   has_many :authors_articles
   has_many :authors, through: :authors_articles
   accepts_nested_attributes_for :authors_articles
 
+  has_many :subjects, as: :subjectable
+
   validates :date_published, :journal_id, :pages, :title, presence: true
+
+  # Instance methods
+  # TODO think about moving these into a presenter.
+  def author
+    return nil if authors.empty?
+    authors.first.name
+  end
+
+  def published_in
+    return nil if journal.nil?
+    journal.title
+  end
 end
