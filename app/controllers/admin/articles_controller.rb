@@ -4,8 +4,8 @@ class Admin::ArticlesController < Admin::CrudController
   def index
     @articles = Article.select("people.*, journals.*").includes(:authors, :journal)
     respond_to do |f|
+      f.json { render json: @articles }
       f.html { render "index" }
-      f.json { { articles: @articles } }
     end
   end
 

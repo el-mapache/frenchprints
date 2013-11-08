@@ -1,4 +1,4 @@
-class Admin::ArtworksController < ApplicationController
+class Admin::ArtworksController < Admin::CrudController
   def index
   end
 

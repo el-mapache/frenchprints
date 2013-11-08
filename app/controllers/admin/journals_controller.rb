@@ -1,5 +1,9 @@
 class Admin::JournalsController < Admin::CrudController
   def index
+    respond_to do |f|
+      f.json { render json: @journals }
+      f.html {}
+    end
   end
 
   def new

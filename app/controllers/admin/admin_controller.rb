@@ -1,6 +1,7 @@
 class Admin::AdminController < ApplicationController
+  layout "admin"
   before_filter :authenticate
-  
+
   private
   def authenticate 
     session[:return_to] ||= request.env["REQUEST_URI"]

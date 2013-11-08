@@ -1,0 +1,67 @@
+= render_errors(@article)
+
+.span10.well
+  = form_for [:admin, :person, @article] do |f|
+    = control_group(f, :text_field, :title, {class: "span4" })
+
+    = fields_for :authors_articles do |fp|
+      = control_group(fp, :text_field, :name, {value: "#{@article.author}", placeholder: "Begin typing to find a person", autocomplete: "off", data: {provide: "typeahead", source: Person.all_with_role("Writer")}})
+
+    = control_group(f, :text_field, :issue_number, {class: "span2", placeholder: "Ex. 2"})
+
+    = fields_for :journal do |fj|
+      = control_group(fj, :text_field, :title, {value: "#{@article.published_in}", placeholder: "Begin typing to find a journal", autocomplete: "off", data: {provide: "typeahead", source: Journal.all}})
+    = control_group(f, :text_field, :pages, {class: "span4" })
+
+    = render "admin/partials/date_picker", f: f, attr: "date_published"
+
+    %hr
+
+    .subject-fields
+      %h5 What is this article about?
+      - unless @article.subjects.empty?
+        = f.fields_for @article.subjects do |builder|
+          = render "subject_fields", f: builder
+      = link_to_add_fields("Associate this article with a subject.", f, :subjects)
+
+    %br
+    .controls
+      = f.submit "Save", class: "btn btn-primary"
+
+- content_for :javascripts do
+  :javascript
+    $(function() {
+      $(".subject-fields").on("change", "input[data-type='subject']", function(evt) {
+        var subjectable = evt.currentTarget.value;
+        var key;
+
+        if (subjectable === "") return;
+
+        if (subjectable == "journals" || subjectable == "articles" || subjectable == "artworks") {
+          key = "title";
+        } else {
+          key = "name";
+        }
+
+        $.ajax({
+          url: "/admin/"+subjectable.toLowerCase(),
+          method: "GET",
+          dataType: "JSON",
+          success: function(response) {
+            var $select = $(evt.currentTarget).parents(".subject-fields").first().find("select[data-type='subject-select']");
+            $.each(response, function(index, resource) {
+              var opt = document.createElement("option");
+              opt.value = resource.id;
+              opt.text = resource[key];
+              $select[0].appendChild(opt);
+            });
+            $select.toggleClass("hide").chosen();
+          },
+          error: function() {
+            console.log("Error");
+            console.log(arguments);
+          }
+        });
+      });
+    });
+

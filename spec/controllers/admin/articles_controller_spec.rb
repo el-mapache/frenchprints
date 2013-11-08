@@ -155,7 +155,7 @@ describe Admin::ArticlesController do
 
     it "redirects to the articles index" do
       response.should redirect_to admin_articles_path
-    end
+    end 
   end
 end
 

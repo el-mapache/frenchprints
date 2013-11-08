@@ -5,10 +5,14 @@ FrenchPrint::Application.routes.draw do
   root to: "application_controller#index"
 
   namespace :admin do
+    get "/" => "home#index"
+
     resources :articles, only: [:index, :destroy]
+    resources :artworks, only: [:index, :destroy]
+
     resources :people do
       resources :roles
-      resources :artworks
+      resources :artworks, only: [:new, :edit, :create, :update]
       resources :articles, only: [:new, :edit, :create, :update]
     end
 

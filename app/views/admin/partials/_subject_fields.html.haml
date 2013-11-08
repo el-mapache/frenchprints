@@ -1,0 +1,12 @@
+.control-group
+  = f.label "Subject Type"
+  .controls
+    = f.text_field :subjectable_type, value: "", placeholder: "Article", autocomplete: "off", data: {type: "subject", provide: "typeahead", source: Article.subjects}, class: "span5"
+
+.control-group
+  = f.label "Subject"
+  .controls
+    = f.select :subjectable_id, [], {},{class: "chosen-subjects hide span5", data: {type: "subject-select"}} 
+
+= f.hidden_field :article_id, value: @article.id
+%br

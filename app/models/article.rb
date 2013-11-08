@@ -1,6 +1,10 @@
 class Article < ActiveRecord::Base
   attr_accessible :date_published, :journal, :pages, :title,
-                  :authors_articles_attributes, :issue_number
+                  :authors_articles_attributes, :issue_number,
+                  :subjects_attributes
+
+  # Defines subjects that an article can be written about
+  SUBJECTS = ["artworks", "people", "galleries", "articles", "journals"]
 
   # Currently there is a one to one relationship with a journal,
   # and the issue number appears on the authors_articles join table.
@@ -18,8 +22,16 @@ class Article < ActiveRecord::Base
   accepts_nested_attributes_for :authors_articles
 
   has_many :subjects, as: :subjectable
+  accepts_nested_attributes_for :subjects
 
   validates :date_published, :journal_id, :pages, :title, presence: true
+
+  # class methods
+  class << self
+    def subjects
+      SUBJECTS
+    end
+  end
 
   # Instance methods
   # TODO think about moving these into a presenter.

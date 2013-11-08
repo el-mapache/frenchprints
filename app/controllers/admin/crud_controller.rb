@@ -9,7 +9,7 @@ class Admin::CrudController < Admin::AdminController
   def is_namespaced?
     self.class.name.include?("::")
   end
-
+  
   private
 
   # Obtain a string of the controller's resource name.

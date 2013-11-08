@@ -3,6 +3,10 @@ class Admin::PeopleController < Admin::CrudController
 
   def index
     @people = Person.all_with_roles
+    respond_to do |f|
+      f.json { render json: @people }
+      f.html {}
+    end
   end
 
   def new
