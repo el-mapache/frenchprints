@@ -1,2 +1,20 @@
-%h1 Admin::Artworks#index
-%p Find me in app/views/admin/artworks/index.html.haml
+.row
+  %h2 Artwork
+  %em New artwork can be added through a person record.
+  .row
+    %br
+    %br
+    %br
+    %table.table.table-bordered.table-striped.table-hover.span10
+      %thead
+        %tr
+          %th Title
+          %th Medium
+          %th Date Released
+          %th Dimensions
+          %th Artist
+          %th Edit
+          %th Delete
+      %tbody
+        - @artworks.each do |artwork|
+          = render "artwork", artwork: artwork

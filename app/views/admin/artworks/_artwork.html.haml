@@ -1,0 +1,15 @@
+%tr
+  %td
+    = link_to artwork.title, admin_person_artwork_path(artwork.artist, artwork)
+  %td
+    = artwork.medium
+  %td
+    = artwork.release_date
+  %td
+    = artwork.dimensions
+  %td
+    = artwork.artist.name
+  %td
+    = link_to "Edit", edit_admin_person_artwork_path(artwork.artist, artwork)
+  %td
+    = link_to "Delete", admin_artwork_path(artwork), data: { confirm: "Are you sure?" }, method: :delete
