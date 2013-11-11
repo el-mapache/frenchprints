@@ -19,9 +19,22 @@
 
     .subject-fields
       %h5 What is this article about?
-      - unless @article.subjects.empty?
-        = f.fields_for @article.subjects do |builder|
-          = render "subject_fields", f: builder
+      - @article.subjects.each do |subject|
+        %div
+          %b 
+            Subject Type 
+          %p 
+            = subject.subjectable_type
+        %div
+          %b 
+            Subject 
+          %p 
+            = subject.name
+        %div
+          = link_to "Remove this subject", admin_subject_path(subject), data: { confirm: "Are you sure?"}, method: :delete, class: "alert alert-error"
+          %br
+          %br
+      -# MAKE ANOTHER ARGUMENT AS CLASS FOR CONDITIONAL EXECUTIONS
       = link_to_add_fields("Associate this article with a subject.", f, :subjects)
 
     %br
@@ -35,7 +48,7 @@
         var subjectable = evt.currentTarget.value;
         var key;
 
-        if (subjectable === "") return;
+        if (subjectable === "" || $.inArray(subjectable, ["articles","people", "journals","artworks"]) === -1) return;
 
         if (subjectable == "journals" || subjectable == "articles" || subjectable == "artworks") {
           key = "title";
@@ -44,18 +57,23 @@
         }
 
         $.ajax({
-          url: "/admin/"+subjectable.toLowerCase(),
+          url: "/admin/"+subjectable,
           method: "GET",
           dataType: "JSON",
           success: function(response) {
             var $select = $(evt.currentTarget).parents(".subject-fields").first().find("select[data-type='subject-select']");
+
+            $select.find("option").remove();
+
             $.each(response, function(index, resource) {
               var opt = document.createElement("option");
               opt.value = resource.id;
               opt.text = resource[key];
               $select[0].appendChild(opt);
             });
-            $select.toggleClass("hide").chosen();
+
+            $select.chosen({disable_search_threshold: 10});
+            $select.trigger("chosen:updated");
           },
           error: function() {
             console.log("Error");

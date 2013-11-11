@@ -9,4 +9,9 @@ class Subject < ActiveRecord::Base
     scope: [:subjectable_type, :subjectable_id]
   }
 
+  def name
+    subject_instance = subjectable
+
+    subject_instance.send(subject_instance.respond_to?(:title) ? :title : :name)
+  end
 end

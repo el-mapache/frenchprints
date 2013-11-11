@@ -6,7 +6,8 @@
 .control-group
   = f.label "Subject"
   .controls
-    = f.select :subjectable_id, [], {},{class: "chosen-subjects hide span5", data: {type: "subject-select"}} 
+    = f.select :subjectable_id, [], {},{class: "chosen-subjects span5", data: {type: "subject-select"}} 
 
 = f.hidden_field :article_id, value: @article.id
+
 %br

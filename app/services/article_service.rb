@@ -10,7 +10,7 @@ class ArticleService
     person = Person.where(params[:person]).first_or_initialize
 
     article_params = params[:article].merge!({journal: journal})
-    create_subject(params[:article][:subjects_attributes])
+    create_subject(params[:article][:subjects_attributes]) if params[:article][:subjects_attributes]
 
     # If the article object getting passed in is a new record,
     # remake it with the form attributes, else, update the existing 
@@ -31,10 +31,8 @@ class ArticleService
     @article
   end
 
-  # This method creates records of polymorphic associations between unknown subjects.
-  # This could probably be genericized if multiple models need this functionality.
+  # Normalize the subjects field for our association
   def create_subject(subject_hash)
-    p subject_hash
     subject_hash.each do |key, subject|
       subject["subjectable_type"].singularize.capitalize
     end
