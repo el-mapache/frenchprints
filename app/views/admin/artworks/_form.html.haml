@@ -1,29 +1,18 @@
 = render_errors(@artwork)
 
-.span8.well
+.span10.well
   = form_for [:admin, @artwork] do |f|
+    %div
+      %h5 Artist
+      = @artwork.artist.name
+    %br
 
-    .control-group
-      = f.label :title, class: "control-label
-    .controls
-      = f.text_field :title, class: "span4"
+    = control_group(f, :text_field, :title)
+    = control_group(f, :text_field, :medium)
+    = control_group(f, :text_field, :dimensions)
+    = render "admin/partials/date_picker", f: f, attr: "release_date"
 
-    .control-group
-      = f.label :medium, class: "control-label
-    .controls
-      = f.text_field :medium, class: "span4"
-
-    .control-group
-      = f.label :dimensions, class: "control-label
-    .controls
-      = f.text_field :dimensions, class: "span4"
-
-    .control-group
-      = f.label :release_date, class: "control-label
-    .controls
-      = f.text_field :release_date, class: "span4"
-
-    %br 
+    %br
     .control-group
       .controls
         = f.submit "Submit", class: "btn btn-primary"

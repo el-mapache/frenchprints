@@ -1,2 +1,8 @@
-%h1 Admin::Artworks#edit
-%p Find me in app/views/admin/artworks/edit.html.haml
+.row
+  %h2 
+    Editing Entry For #{@artwork.title}
+  = link_to "Back", admin_artwork_path, class: "btn"
+  %br
+  %br
+  .row
+    = render "form"

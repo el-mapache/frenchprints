@@ -21,14 +21,14 @@
       %h5 What is this article about?
       - @article.subjects.each do |subject|
         %div
-          %b 
-            Subject Type 
-          %p 
+          %b
+            Subject Type
+          %p
             = subject.subjectable_type
         %div
-          %b 
-            Subject 
-          %p 
+          %b
+            Subject
+          %p
             = subject.name
         %div
           = link_to "Remove this subject", admin_subject_path(subject), data: { confirm: "Are you sure?"}, method: :delete, class: "alert alert-error"

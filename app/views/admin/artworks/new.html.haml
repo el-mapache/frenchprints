@@ -1,2 +1,7 @@
-%h1 Admin::Artworks#new
-%p Find me in app/views/admin/artworks/new.html.haml
+.row
+  %h2 Create New Artwork
+  = link_to "Back", admin_artwork_path, class: "btn"
+  %br
+  %br
+  .row
+    = render "form"
