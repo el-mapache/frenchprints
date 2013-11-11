@@ -17,8 +17,8 @@ FrenchPrint::Application.routes.draw do
 
     resources :people do
       resources :roles
-      resources :artworks, only: [:new, :edit, :create, :update]
-      resources :articles, only: [:new, :edit, :create, :update]
+      resources :artworks, only: [:new, :edit, :show, :create, :update]
+      resources :articles, only: [:new, :edit, :show, :create, :update]
     end
 
     resources :journals do

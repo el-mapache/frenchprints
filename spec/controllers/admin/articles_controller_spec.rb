@@ -155,6 +155,10 @@ describe Admin::ArticlesController do
       delete :destroy, id: article
       response.should redirect_to admin_articles_path
     end 
+
+    it "populates the flash with a success notice" do
+      flash[:notice].should_not be_nil
+    end
   end
 end
 

@@ -3,8 +3,6 @@ class Artwork < ActiveRecord::Base
 
   belongs_to :artist, class_name: "Person", foreign_key: :artist_id
 
-  validates :title, presence: true
-  validates :medium, presence: true
-  validates :release_date, presence: true
-  validates :artist_id, presence: true, numericality: true
+  validates :title, :medium, :release_date, :artist_id, presence: true
+  validates :artist_id, numericality: true
 end
