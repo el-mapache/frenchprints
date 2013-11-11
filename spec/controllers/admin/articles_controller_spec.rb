@@ -144,16 +144,15 @@ describe Admin::ArticlesController do
   end
 
   describe "delete #destroy" do
-    before :each do
-      delete :destroy, id: article
-      @article = assigns(:article)
-    end
-
     it "removes the record" do
-      p @article
+      article = create(:article, title: "Argumentative Debates")
+      lambda do
+        delete :destroy, id: article
+      end.should(change(Article, :count).by(-1))
     end
 
     it "redirects to the articles index" do
+      delete :destroy, id: article
       response.should redirect_to admin_articles_path
     end 
   end

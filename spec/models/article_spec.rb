@@ -25,4 +25,21 @@ describe Article do
     it { should validate_presence_of :pages }
     it { should validate_presence_of :title }
   end
+
+  context "instance methods" do
+    describe "#author" do 
+      it "returns the author's name" do
+        article = create(:article)
+        article.authors_articles.create(person_id: create(:person).id)
+        article.author.should eql "John Doe"
+      end
+    end
+
+    describe "published in" do
+      it "returns the title of the journal it was published in" do
+        article = create(:article)
+        article.published_in.should eql "MyString"
+      end
+    end
+  end
 end

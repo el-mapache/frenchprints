@@ -21,7 +21,7 @@ class Article < ActiveRecord::Base
   has_many :authors, through: :authors_articles
   accepts_nested_attributes_for :authors_articles
 
-  has_many :subjects, as: :subjectable
+  has_many :subjects
   accepts_nested_attributes_for :subjects
 
   validates :date_published, :journal_id, :pages, :title, presence: true

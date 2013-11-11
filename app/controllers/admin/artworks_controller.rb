@@ -1,5 +1,9 @@
 class Admin::ArtworksController < Admin::CrudController
   def index
+    respond_to do |f|
+      f.json { render json: @artworks }
+      f.html { render "index" }
+    end
   end
 
   def new
