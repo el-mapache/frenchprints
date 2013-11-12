@@ -1,39 +1,37 @@
-.row
-  %fieldset.span8.well
-    .control-group
-      = f.label :event_name
-      %em Should be something short and descriptive, i.e. "death".
-      .controls
-        = f.text_field :event_name
+%fieldset{style: "padding-left: 25px;padding-top:20px"}
+  .control-group
+    = f.label :event_name
+    %em Should be something short and descriptive, i.e. "death".
+    .controls
+      = f.text_field :event_name
 
-    = render "admin/partials/date_picker", f: f, attr: "start_date"
-    = render "admin/partials/date_picker", f: f, attr: "end_date"
+  = render "admin/partials/date_picker", f: f, attr: "start_date"
+  = render "admin/partials/date_picker", f: f, attr: "end_date"
 
-    .control-group
-      = f.label :street_address
-      .controls
-        = f.text_field :street_address, placeholder: "Gare du Nord"
+  .control-group
+    = f.label :street_address
+    .controls
+      = f.text_field :street_address, placeholder: "Gare du Nord"
 
-    .control-group
-      = f.label :city
-      .controls
-        = f.text_field :city, placeholder: "Paris"
+  .control-group
+    = f.label :city
+    .controls
+      = f.text_field :city, placeholder: "Paris"
 
-    .control-group
-      = f.label :country
-      .controls
-        = f.text_field :country, placeholder: "France"
+  .control-group
+    = f.label :country
+    .controls
+      = f.text_field :country, placeholder: "France"
 
-    .control-group
-      = f.label :state
-      %em (optional)
-      .controls
-        = f.text_field :state
+  .control-group
+    = f.label :state
+    %em (optional)
+    .controls
+      = f.text_field :state
 
-    .control-group
-      = f.label :province
-      %em (optional)
-      .controls
-        = f.text_field :province
-%hr
+  .control-group
+    = f.label :province
+    %em (optional)
+    .controls
+      = f.text_field :province
 

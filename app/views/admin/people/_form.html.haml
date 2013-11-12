@@ -25,22 +25,31 @@
               = role.name
     %hr
     %div
-      %h4 Locations and Events
       .control-group.info
         - if @person.new_record?
           %em.help-inline
             You may add more events after saving this record.
-      = f.fields_for :locations do |builder|
-        = render "admin/partials/location_fields", f: builder
- 
+      .accordion#location-accordion
+        .accordion-group
+          .accordion-heading.alert.alert-info{style: "margin-bottom: 0px"}
+            %h4.accordion-toggle{data: {toggle: "collapse", parent: "location-accordion", target: "#events"}}
+              Locations and Events
+          %div#events.accordion-body.collapse
+            = f.fields_for :locations do |builder|
+              = render "admin/partials/location_fields", f: builder
+
       = link_to_add_fields("Add Location", f, :locations) unless @person.new_record?
 
     - if !@person.new_record? && @person.all_roles.include?("Writer")
-      %hr
       %div
         = link_to "Add an article", new_admin_person_article_path(@person)
 
-    %br 
+
+    - if !@person.new_record? && @person.all_roles.include?("Artist")
+      %div
+        = link_to "Add a work of art", new_admin_person_artwork_path(@person)
+
+    %br
     .control-group
       .controls
         = f.submit "Submit", class: "btn btn-primary"

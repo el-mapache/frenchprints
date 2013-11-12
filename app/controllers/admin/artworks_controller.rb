@@ -1,5 +1,5 @@
 class Admin::ArtworksController < Admin::CrudController
-  skip_before_filter :create
+  skip_before_filter :create, :new
 
   def index
     respond_to do |f|
@@ -9,6 +9,7 @@ class Admin::ArtworksController < Admin::CrudController
   end
 
   def new
+    @artwork = Person.find(params[:person_id]).artworks.build
   end
 
   def show
@@ -29,6 +30,14 @@ class Admin::ArtworksController < Admin::CrudController
   end
 
   def update
+    @artwork.update_attributes(params[:artwork])
+    respond_to do |f|
+      if @artwork.save
+        f.html { redirect_to admin_artworks_path, notice: "Artwork updated successfully" }
+      else
+        f.html { render "edit", error: @artwork.errors.full_messages }
+      end
+    end
   end
 
   def destroy

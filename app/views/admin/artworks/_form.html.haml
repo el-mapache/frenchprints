@@ -1,7 +1,7 @@
 = render_errors(@artwork)
 
 .span10.well
-  = form_for [:admin, @artwork] do |f|
+  = form_for [:admin, :person, @artwork] do |f|
     %div
       %h5 Artist
       = @artwork.artist.name

@@ -106,6 +106,20 @@ describe Admin::ArtworksController do
     end
 
     describe "PUT 'update'" do
+      let(:artwork) { create(:artwork) }
+
+      before :each do
+        put :update, person_id: person, id: artwork, artwork: { title: "Kitten Explosion"}
+      end
+
+      it "successfully updates the record" do
+        art = assigns(:artwork)
+        art.title.should eql "Kitten Explosion"
+      end
+
+      it "redirects to the index page" do
+        response.should redirect_to(admin_artworks_path)
+      end
     end
   end
 
