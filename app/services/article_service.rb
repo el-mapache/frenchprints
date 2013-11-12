@@ -9,13 +9,19 @@ class ArticleService
     journal = Journal.where(params[:journal]).first_or_initialize
     person = Person.where(params[:person]).first_or_initialize
 
-    article_params = params[:article].merge!({journal: journal})
-    create_subject(params[:article][:subjects_attributes]) if params[:article][:subjects_attributes]
+    if params[:article][:subjects_attributes]
+      subjects = params[:article][:subjects_attributes]
+      params[:article].delete(:subjects_attributes)
+
+      article_params = params[:article].merge!({
+        journal: journal,
+        subjects_attributes: normalize_subject_type(subjects)
+      })
+    end
 
     # If the article object getting passed in is a new record,
     # remake it with the form attributes, else, update the existing 
     # record's attributes
-
     if @article.new_record?
       @article = Article.new(article_params)
     else
@@ -31,10 +37,11 @@ class ArticleService
     @article
   end
 
+  # this doesnt save the original
   # Normalize the subjects field for our association
-  def create_subject(subject_hash)
+  def normalize_subject_type(subject_hash)
     subject_hash.each do |key, subject|
-      subject["subjectable_type"].singularize.capitalize
+      subject["subjectable_type"] = subject["subjectable_type"].singularize.capitalize!
     end
   end
 end
