@@ -14,7 +14,7 @@ class ArticleService
       params[:article].delete(:subjects_attributes)
 
       article_params = params[:article].merge!({
-        journal: journal,
+        journal: journal, 
         subjects_attributes: normalize_subject_type(subjects)
       })
     end

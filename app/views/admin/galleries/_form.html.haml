@@ -1,0 +1,21 @@
+= render_errors(@gallery)
+
+.span10.well
+  = form_for [:admin, @gallery] do |f|
+
+    = control_group(f, :text_field, :name)
+    - if @gallery.new_record?
+      %p
+        %em You can add some assoctiations after saving.
+    - else
+      %div
+        %h4 Personnel
+      %div
+        %h4 Locations
+      %div
+        %h4 Exhibitions
+
+    %br
+    .controls
+      = f.submit "Save", class: "btn btn-primary"
+

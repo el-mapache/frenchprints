@@ -1,0 +1,20 @@
+.row
+  %h2 Galleries
+  .row
+    %div.span2
+      = link_to "Add a Gallery", new_admin_gallery_path, class: "btn btn-primary"
+  .row
+    %br
+    %br
+    %br
+    %table.table.table-bordered.table-striped.table-hover.span10
+      %thead
+        %tr
+          %th Name
+          %th Locations
+          %th Exhibitions
+          %th Edit
+          %th Delete
+      %tbody
+        - @galleries.each do |gallery|
+          = render "gallery", gallery: gallery

@@ -1,9 +1,4 @@
 FrenchPrint::Application.routes.draw do
-
-  get "subjects/index"
-
-  get "subjects/destroy"
-
   devise_for :users, :controllers => {:registrations => "users/registrations"}
 
   root to: "application_controller#index"
@@ -14,6 +9,10 @@ FrenchPrint::Application.routes.draw do
     resources :articles, only: [:index, :destroy]
     resources :artworks, only: [:index, :destroy]
     resources :subjects, only: [:destroy]
+
+    resources :galleries do
+      resources :exhibitions
+    end
 
     resources :people do
       resources :roles

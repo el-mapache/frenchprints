@@ -1,0 +1,11 @@
+%tr
+  %td
+    = link_to "#{gallery.name}", admin_gallery_path(gallery)
+  %td
+    = gallery.locations.count
+  %td
+    = gallery.exhibitions.count
+  %td
+    = link_to "Edit", edit_admin_gallery_path(gallery)
+  %td
+    = link_to "Delete", admin_gallery_path(gallery), data: { confirm: "Are you sure?"}, method: :delete
