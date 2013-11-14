@@ -3,6 +3,7 @@ require 'spec_helper'
 describe Exhibition do
   context "accessibility" do
     it { should allow_mass_assignment_of :name }
+    it { should allow_mass_assignment_of :description }
     it { should allow_mass_assignment_of :person_id }
     it { should allow_mass_assignment_of :gallery_id }
     it { should allow_mass_assignment_of :locations_attributes }

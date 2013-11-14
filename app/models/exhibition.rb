@@ -1,5 +1,5 @@
 class Exhibition < ActiveRecord::Base
-  attr_accessible :gallery_id, :name, :person_id, :locations_attributes
+  attr_accessible :description, :gallery_id, :name, :person_id, :locations_attributes
 
   has_many :locations, as: :locatable
   accepts_nested_attributes_for :locations
