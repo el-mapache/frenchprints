@@ -9,9 +9,12 @@ FrenchPrint::Application.routes.draw do
     resources :articles, only: [:index, :destroy]
     resources :artworks, only: [:index, :destroy]
     resources :subjects, only: [:destroy]
+    resources :personnel_histories
+
+    resources :exhibitions, only: [:index, :destroy, :show]
 
     resources :galleries do
-      resources :exhibitions
+      resources :exhibitions, only: [:create, :update, :edit, :new]
     end
 
     resources :people do
@@ -20,8 +23,6 @@ FrenchPrint::Application.routes.draw do
       resources :articles, only: [:new, :edit, :show, :create, :update]
     end
 
-    resources :journals do
-      resources :personnel_histories
-    end
+    resources :journals
   end
 end

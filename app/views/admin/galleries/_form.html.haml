@@ -1,20 +1,33 @@
 = render_errors(@gallery)
 
-.span10.well
+.span10
   = form_for [:admin, @gallery] do |f|
 
     = control_group(f, :text_field, :name)
     - if @gallery.new_record?
       %p
-        %em You can add some assoctiations after saving.
+        %em You can add associations after saving.
     - else
       %div
-        %h4 Personnel
-      %div
         %h4 Locations
+        - unless @gallery.locations.empty?
+          = f.fields_for :locations do |builder| 
+            = render "admin/partials/location_fields", f: builder
+        = link_to_add_fields("Add location", f, :locations)
+      %div
+        %h4 Personnel
+        - unless @gallery.personnel_histories.empty?
+          = fields_for :personnel_histories do |builder|
+            = render "admin/partials/personnel_history_fields", f: builder, resource: @gallery
+        = link_to_add_fields("Add personnel", f, :personnel_histories, @gallery)
       %div
         %h4 Exhibitions
-
+        - unless @gallery.exhibitions.empty?
+          %ul
+          - @gallery.exhibitions.each do |ex|
+            %li
+              = link_to ex.name, admin_gallery_exhibition_path(@gallery, ex)
+        = link_to "Add an exhibition", new_admin_gallery_exhibition_path(@gallery)
     %br
     .controls
       = f.submit "Save", class: "btn btn-primary"

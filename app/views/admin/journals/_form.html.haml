@@ -7,7 +7,7 @@
     = control_group(f, :text_field, :publication_run, {class: "span4"})
 
     - unless @journal.locations.empty?
-      = f.fields_for @journal.locations do |builder| 
+      = f.fields_for :locations do |builder| 
         = render "admin/partials/location_fields", f: builder
     - unless @journal.new_record?
       .control-group
@@ -16,8 +16,11 @@
     - if @journal.new_record?
       %h5 You can associate personnel with this publication after saving.
     - else
-      %div
-        = link_to "View/Edit Personnel History", admin_journal_personnel_histories_path(@journal)
+      %h4 Personnel
+      - unless @journal.personnel_histories.empty?
+        = fields_for :personnel_histories do |builder|
+          = render "admin/partials/personnel_history_fields", f: builder, resource: @journal
+      = link_to_add_fields("Add personnel", f, :personnel_histories, @journal)
 
     = f.submit "Save", class: "btn btn-primary"
 

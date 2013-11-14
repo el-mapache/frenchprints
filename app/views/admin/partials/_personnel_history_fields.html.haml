@@ -1,0 +1,15 @@
+.row
+  .span10
+    .control-group
+      %label
+        Pick a location to associate employee with.
+      .controls
+        = f.select :location_id, resource.locations.all.collect { |l| [ l.full_address + " #{l.event_name}", l.id ] }
+
+    = control_group(f, :text_field, :personnel_histories, {value: "", placeholder: "Begin typing to find a person", autocomplete: "off", data: {provide: "typeahead", source: Person.all_with_attribute("name")}})
+
+    %h5
+      Enter the start and end dates for this record.
+
+    = render "admin/partials/date_picker", attr: "start_date", f: f
+    = render "admin/partials/date_picker", attr: "end_date", f: f

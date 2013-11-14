@@ -10,9 +10,11 @@ describe Exhibition do
   end
 
   context "associations" do
-    it { should belong_to :person }
+    it { should belong_to :organizer }
     it { should belong_to :gallery }
     it { should have_many :locations }
+    it { should have_many :exhibitions_artists }
+    it { should have_many(:artists).through(:exhibitions_artists) }
   end
 
   context "validations" do
