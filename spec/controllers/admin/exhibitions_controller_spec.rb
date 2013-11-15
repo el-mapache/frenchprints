@@ -73,15 +73,7 @@ describe Admin::ExhibitionsController do
     end
 
     context "success" do
-      it "redirects to the gallery" do
-        post :create, gallery_id: @gallery, exhibition: {
-          name: "Fantastik Computer Musik",
-          description: "Synth Explosion"
-        }
-        response.should redirect_to admin_gallery_path(@gallery)
-      end
-
-      it "creates exhibition artists" do
+      before :each do
         post :create, gallery_id: @gallery, exhibition: {
           name: "Fantastik Computer Musik",
           description: "Synth Explosion"
@@ -91,17 +83,64 @@ describe Admin::ExhibitionsController do
             person_id: create(:person).id
           }
         }
+      end
 
+      it "redirects to the gallery" do
+        response.should redirect_to admin_gallery_path(@gallery)
+      end
+
+      it "populates the flash notice" do
+        flash[:notice].should_not be_nil
+      end
+
+      it "creates exhibition artists" do
         exhibit = assigns(:exhibition)
         exhibit.exhibitions_artists.should_not be_empty
       end
     end
+
+    context "failure" do
+      before :each do
+        post :create, gallery_id: @gallery, exhibition: {}
+      end
+
+      it "renders the new template on failure" do
+        response.should render_template "new"
+      end
+
+      it "populates the errors object" do
+        exhibit = assigns(:exhibition)
+        exhibit.errors.should_not be_nil
+      end
+    end
   end
 
-  describe "GET 'update'" do
-    it "returns http success" do
-      get 'update'
-      response.should be_success
+  describe "#update" do
+    let(:gallery) { create(:gallery) }
+    let(:exhibition) { create(:exhibition) }
+
+    before :each do
+      put 'update', gallery_id: gallery, id: exhibition,
+      exhibition: {
+        name: "Brain Trust"
+      },
+      exhibitions_artists: {
+        "a" => { person_id: create(:person).id },
+        "b" => { person_id: create(:person, name: "James Dean").id }
+      }
+    end
+
+    it "updates the exhibition" do
+      ex = assigns(:exhibition)
+      ex.name.should eq("Brain Trust")
+    end
+
+    it "redirects to the gallery" do
+      response.should redirect_to admin_gallery_path(gallery)
+    end 
+
+    it "populates the flash notice" do
+      flash[:notice].should_not be_nil
     end
   end
 

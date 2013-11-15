@@ -1,2 +1,33 @@
-%h1 Admin::Articles#show
-%p Find me in app/views/admin/articles/show.html.haml
+%h2
+  = @gallery.name
+= link_to "Back", admin_exhibitions_path, class: "btn"
+= link_to "Edit", edit_admin_gallery_path(@gallery), class: "btn btn-primary"
+
+%hr
+%br
+%div
+  %div
+    %h4
+      Personnel
+    - unless @gallery.personnel_histories.empty?
+      %ul
+        - @gallery.personnel_histories.each do |ph|
+          %li
+            = "#{Person.find(ph.person_id).name} - #{Location.find(ph.location_id).city}"
+  %div
+    %h4
+      Locations
+    - unless @gallery.locations.empty?
+      %ul
+        - @gallery.locations.each do |l|
+          %li
+            = "#{l.full_address} (between #{l.start_date.to_s(:long)} and #{l.end_date.to_s(:long)})"
+  %div
+    %h4 
+      Exhibitions
+    %ul
+      - unless @gallery.exhibitions.empty?
+        - @gallery.exhibitions.each do |ex|
+          %li
+            = link_to ex.name, admin_exhibition_path(ex.id)
+

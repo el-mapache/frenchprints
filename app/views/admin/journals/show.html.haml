@@ -1,0 +1,21 @@
+%h2
+  = @journal.title
+= link_to "Back", admin_journals_path, class: "btn"
+= link_to "Edit", edit_admin_journal_path(@journal), class: "btn btn-primary"
+%hr
+%br
+
+%div
+  %div
+    %h4
+      Publication Run
+    = @journal.publication_run
+  %div
+    %h4
+      Personnel
+  %div
+    %h4
+      Locations
+  %div
+    %h4
+      Writers

@@ -1,7 +1,7 @@
 class Person < ActiveRecord::Base
-  attr_accessible :bio, :name, :blurb, :role_ids, :locations_attributes,
-                  :sex
-  
+  attr_accessible :bio, :name, :blurb, :role_ids,
+                  :locations_attributes, :sex
+
   # Associations
   has_many :representations, dependent: :destroy
   has_many :representees, through: :representations, foreign_key: :represented_id
@@ -14,7 +14,7 @@ class Person < ActiveRecord::Base
 
   has_many :locations, as: :locatable, dependent: :destroy
   accepts_nested_attributes_for :locations
-  
+
   has_many :authors_articles, dependent: :destroy
   has_many :articles, through: :authors_articles
 

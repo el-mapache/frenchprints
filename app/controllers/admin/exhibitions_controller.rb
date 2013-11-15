@@ -12,19 +12,33 @@ class Admin::ExhibitionsController < Admin::CrudController
   end
 
   def create
-    params[:exhibitions_artists].each do |key, value|
-      @exhibition.exhibitions_artists << ExhibitionsArtist.new(value)
-    end if params[:exhibitions_artists]
+    if @exhibition.save
+      params[:exhibitions_artists].each do |key, value|
+        @exhibition.exhibitions_artists << ExhibitionsArtist.new(value)
+      end if params[:exhibitions_artists]
+    end
 
     respond_to do |f|
       if @exhibition.save
-        f.html { redirect_to admin_gallery_path(params[:gallery_id]) }
+        f.html { redirect_to admin_gallery_path(params[:gallery_id]), notice: "Exhibition created successfully" }
       else
+        f.html { render "new", error: @exhibition.errors.full_messages}
       end
     end
   end
 
   def update
+    params[:exhibitions_artists].each do |key, value|
+      @exhibition.exhibitions_artists.create(value)
+    end if params[:exhibitions_artists]
+
+    respond_to do |f|
+      if @exhibition.update_attributes(params[:exhibition])
+        f.html { redirect_to admin_gallery_path(params[:gallery_id]), notice: "Exhibition successfully updated" }
+      else
+        f.html { render "edit", error: @exhibition.errors.full_messages }
+      end
+    end
   end
 
   def destroy

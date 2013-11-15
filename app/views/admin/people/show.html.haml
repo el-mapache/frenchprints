@@ -2,19 +2,25 @@
   = @person.name
 = link_to "Back", admin_people_path, class: "btn"
 = link_to "Edit", edit_admin_person_path(@person), class: "btn btn-primary"
+%hr
+%br
 %div
   %div
-    Brief Description
+    %h4
+      Brief Description
     = @person.blurb
   %div
-    Biography
+    %h4
+      Biography
     = @person.bio
   %div
-    Birth
-    = @person.birth.start_date
+    %h4
+      Birth
+    = @person.birth.start_date.to_s(:long)
   %div
-    Death
-    = @person.death.start_date
+    %h4
+      Death
+    = @person.death.start_date.to_s(:long)
 
 - @person.roles.each do |role|
   = render "application/roles/#{role.name.downcase.to_s}" rescue nil

@@ -1,2 +1,24 @@
-%h1 Admin::Exhibitions#show
-%p Find me in app/views/admin/exhibitions/show.html.haml
+%h2
+  = @exhibition.name
+= link_to "Back", admin_exhibitions_path, class: "btn"
+= link_to "Edit", edit_admin_gallery_exhibition_path(@exhibition.gallery_id, @exhibition), class: "btn btn-primary"
+%hr
+%br
+%div
+  %div
+    %h4 
+      Organizer
+    %p
+      = Person.find(@exhibition.person_id).name
+  %div
+    %h4 
+      Description
+    %p
+      = @exhibition.description
+  %div
+    %h4 
+      Artists Shown
+    %ul
+      - Person.where("id IN (?)", @exhibition.exhibitions_artists.map { |ea| ea.person_id }.join(',')).each do |person|
+        %li 
+          = link_to person.name, admin_person_path(person.id)
