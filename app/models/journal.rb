@@ -10,6 +10,8 @@ class Journal < ActiveRecord::Base
 
   has_many :articles
 
+  has_many :media, as: :imagable
+
   validates :title, presence: true
 
   class << self

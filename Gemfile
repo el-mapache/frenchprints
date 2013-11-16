@@ -5,10 +5,10 @@ gem "heroku"
 gem "devise"
 gem "geocoder"
 gem "carrierwave"
+gem "mini_magick"
 
 group :development do
   gem 'debugger'
-  #gem "better_errors"
   gem 'thin'
 end
 

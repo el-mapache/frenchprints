@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131116013814) do
+ActiveRecord::Schema.define(:version => 20131116175933) do
 
   create_table "articles", :force => true do |t|
     t.string   "title",          :null => false
@@ -85,6 +85,14 @@ ActiveRecord::Schema.define(:version => 20131116013814) do
     t.integer  "locatable_id",   :null => false
     t.string   "locatable_type", :null => false
     t.string   "event_name"
+  end
+
+  create_table "media", :force => true do |t|
+    t.string   "image"
+    t.integer  "imagable_id"
+    t.string   "imagable_type"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "people", :force => true do |t|

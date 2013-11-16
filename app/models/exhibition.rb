@@ -7,6 +7,8 @@ class Exhibition < ActiveRecord::Base
   has_many :exhibitions_artists
   has_many :artists, through: :exhibitions_artists, source: :person, foreign_key: :person_id
 
+  has_many :media, as: :imagable
+
   belongs_to :gallery
   belongs_to :organizer, class_name: "Person", foreign_key: :person_id
 
