@@ -1,0 +1,15 @@
+= render_errors(@exhibition)
+
+.span10
+  = form_for [:admin, :gallery, @exhibition] do |f|
+    = control_group(f, :text_field, :name)
+    = control_group(f, :text_area, :description, {class: "span5", rows: "5"})
+    = control_group(f, :text_field, :person_id, {value: "#{@exhibition.organized_by}", placeholder: "Begin typing to find a person", autocomplete: "off", data: {provide: "typeahead", source: Person.all}})
+    %div
+      %h4
+        Location
+      = fields_for :location do |fl|
+        = render "admin/partials/location_fields", f: fl
+
+    .grid-spacing
+      = f.submit "Submit", class: "btn btn-primary"

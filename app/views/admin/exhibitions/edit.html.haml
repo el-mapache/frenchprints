@@ -1,2 +1,8 @@
-%h1 Admin::Exhibitions#edit
-%p Find me in app/views/admin/exhibitions/edit.html.haml
+.row
+  %h2 
+    Editing Entry For #{@exhibition.name}
+  = link_to "Back", admin_exhibitions_path, class: "btn"
+  %br
+  %br
+  .row
+    = render "form"

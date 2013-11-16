@@ -1,6 +1,6 @@
 %tr
   %td
-    = link_to "#{article.title}", admin_article_path(article)
+    = link_to "#{article.title}", admin_person_article_path(article.authors.first, article)
   %td
     = article.authors.first.name
   %td

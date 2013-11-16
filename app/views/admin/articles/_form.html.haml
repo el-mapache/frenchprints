@@ -1,6 +1,6 @@
 = render_errors(@article)
 
-.span10.well
+.span10
   = form_for [:admin, :person, @article] do |f|
     = control_group(f, :text_field, :title, {class: "span4" })
 

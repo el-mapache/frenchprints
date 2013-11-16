@@ -1,0 +1,15 @@
+%tr
+  %td
+    = link_to "#{exhibit.name}", admin_exhibition_path(exhibit)
+  %td
+    = exhibit.description
+  %td
+    = exhibit.gallery.name
+  %td
+    = exhibit.organizer.name
+  %td
+    = exhibit.locations.first
+  %td
+    = link_to "Edit", edit_admin_gallery_exhibition_path(exhibit.gallery_id, exhibit)
+  %td
+    = link_to "Delete", admin_exhibition_path(exhibit), data: { confirm: "Are you sure?"}, method: :delete

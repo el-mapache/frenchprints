@@ -1,2 +1,24 @@
-%h1 Admin::Exhibitions#index
-%p Find me in app/views/admin/exhibitions/index.html.haml
+.row
+  %h2 Exhibitions
+  %p
+    %em 
+      New exhibitions can be added through a
+      %a{href: "#{admin_galleries_path}"} Gallery
+      record.
+  .row
+    %br
+    %br
+    %br
+    %table.table.table-bordered.table-striped.table-hover.span10
+      %thead
+        %tr
+          %th Name
+          %th Description
+          %th Associated Gallery
+          %th Organizer
+          %th Location
+          %th Edit
+          %th Delete
+      %tbody
+        - @exhibitions.each do |exhibition|
+          = render "exhibit", exhibit: exhibition

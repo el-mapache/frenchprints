@@ -8,6 +8,8 @@
 
     = control_group(f, :text_field, :personnel_histories, {value: "", placeholder: "Begin typing to find a person", autocomplete: "off", data: {provide: "typeahead", source: Person.all_with_attribute("name")}})
 
+    = control_group(f, :text_field, :title, {placeholder: "Job Title"})
+
     %h5
       Enter the start and end dates for this record.
 

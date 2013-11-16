@@ -1,2 +1,29 @@
-%h1 Admin::Articles#show
-%p Find me in app/views/admin/articles/show.html.haml
+%h2
+  = @article.title
+= link_to "Back", admin_articles_path, class: "btn"
+= link_to "Edit", edit_admin_person_article_path(@article.authors.first, @article), class: "btn btn-primary"
+%hr
+%br
+
+%div
+  %div
+    %h4
+      Author
+    = @article.authors.first.name
+  %div
+    %h4
+      Published In
+    = @article.journal.title
+  %div
+    %h4
+      Issue Number
+    = @article.issue_number
+  %div
+    %h4
+      Date Published
+    = @article.date_published.to_s(:long)
+  %div
+    %h4
+      Pages
+    = @article.pages
+

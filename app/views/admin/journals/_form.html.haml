@@ -16,11 +16,15 @@
     - if @journal.new_record?
       %h5 You can associate personnel with this publication after saving.
     - else
-      %h4 Personnel
-      - unless @journal.personnel_histories.empty?
-        = fields_for :personnel_histories do |builder|
-          = render "admin/partials/personnel_history_fields", f: builder, resource: @journal
-      = link_to_add_fields("Add personnel", f, :personnel_histories, @journal)
+      .grid-spacing
+        %h4
+          Personnel
+        - unless @journal.personnel_histories.empty?
+          = fields_for :personnel_histories do |builder|
+            = render "admin/partials/personnel_history_fields", f: builder, resource: @journal
+        = link_to_add_fields("Add personnel", f, :personnel_histories, @journal)
 
-    = f.submit "Save", class: "btn btn-primary"
+    %br
+    .grid-spacing
+      = f.submit "Save", class: "btn btn-primary"
 

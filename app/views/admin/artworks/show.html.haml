@@ -1,2 +1,29 @@
-%h1 Admin::Artworks#show
-%p Find me in app/views/admin/artworks/show.html.haml
+%h2
+  = @artwork.title
+= link_to "Back", admin_artworks_path, class: "btn"
+= link_to "Edit", edit_admin_person_artwork_path(@artwork.artist, @artwork), class: "btn btn-primary"
+%hr
+%br
+
+.grid-spacing
+  %div
+    %h4
+      Artist
+    %p
+      = @artwork.artist.name
+  %div
+    %h4
+      Medium
+    %p
+      = @artwork.medium
+  %div
+    %h4
+      Release Date
+    %p
+      = @artwork.release_date
+  %div
+    %h4
+      Dimensions
+    %p
+      = @artwork.dimensions || "Not Available"
+

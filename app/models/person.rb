@@ -21,6 +21,8 @@ class Person < ActiveRecord::Base
   has_many :exhibitions_artists
   has_many :exhibitions, through: :exhibitions_artists
 
+  has_many :galleries
+
   # Validations
   validates :name, presence: true, uniqueness: true
   validates :blurb, length: { maximum: 140 }
