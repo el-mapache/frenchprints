@@ -21,6 +21,7 @@ FrenchPrint::Application.routes.draw do
       resources :roles
       resources :artworks, only: [:new, :edit, :show, :create, :update]
       resources :articles, only: [:new, :edit, :show, :create, :update]
+      resources :representations, only: [:create, :destroy]
     end
 
     resources :journals

@@ -10,10 +10,8 @@ class Person < ActiveRecord::Base
   has_many :artworks, class_name: "Artwork", foreign_key: :artist_id, dependent: :destroy
 
   has_and_belongs_to_many :roles, uniq: true, before_add: :validates_role
-  accepts_nested_attributes_for :roles
 
   has_many :locations, as: :locatable, dependent: :destroy
-  accepts_nested_attributes_for :locations
 
   has_many :authors_articles, dependent: :destroy
   has_many :articles, through: :authors_articles
@@ -25,6 +23,8 @@ class Person < ActiveRecord::Base
 
   # ActiveRecord extension
   has_media
+
+  accepts_nested_attributes_for :roles, :locations
 
   # Validations
   validates :name, presence: true, uniqueness: true
@@ -56,19 +56,19 @@ class Person < ActiveRecord::Base
         "Other"
     end
   end
-  
+
   # For whatever reason this finder wasnt working by default
   def representative
-    Person.find_by_sql(["SELECT `people`.* FROM `people` INNER JOIN `representations` ON `people`.`id` = `representations`.`person_id` WHERE `representations`.`represented_id` = ?", id])
+    Person.find_by_sql(["SELECT `people`.* FROM `people` as p INNER JOIN `representations` as r ON `p`.`id` = `r`.`person_id` WHERE `r`.`represented_id` = ?", id])
   end
 
-  # Build Associations 
+  # Build Associations
   def add_role name
     roles << Role.where(name: name).first_or_create
     save
   end
-  
-  def all_roles 
+
+  def all_roles
     roles.map { |role| role.name }
   end
 
@@ -76,13 +76,14 @@ class Person < ActiveRecord::Base
   # TODO/Note: The artist resource is not validated
   def represent(representee, start_date, end_date)
     return errors.add(:base, "Only dealers can represent someone.") unless has_role?("Dealer")
-    representations.create(representee: representee, start_date: start_date, end_date: end_date)
+    representations.create(represented_id: representee, start_date: start_date, end_date: end_date)
   end
 
   # Params should constitute a valid artwork model
   def add_artwork(params)
     # Philosophy
     return errors.add(:base, "Only artists can produce artwork.") unless has_role?("Artist")
+
     artworks.create(params)
     save
   end
@@ -106,11 +107,11 @@ class Person < ActiveRecord::Base
   def has_role?(role)
     !roles.where(name: role).empty?
   end
-  
+
   def birth
     locations.where(event_name: "birth").first
   end
-  
+
   def death
     locations.where(event_name: "death").first
   end

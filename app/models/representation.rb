@@ -1,5 +1,5 @@
 class Representation < ActiveRecord::Base
-  attr_accessible :current, :end_date, :representee, :representative, 
+  attr_accessible :current, :end_date, :represented_id, :representative, 
                   :start_date
   
   # Associations 
@@ -7,7 +7,7 @@ class Representation < ActiveRecord::Base
   belongs_to :representative, class_name: "Person", foreign_key: :person_id
 
   # Validations
-  validates :representee, presence: true
+  validates :represented_id, presence: true
   validates :representative, presence: true
 
   validates :start_date, presence: true

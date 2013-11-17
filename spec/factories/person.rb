@@ -11,8 +11,8 @@ FactoryGirl.define do
     factory :dealer do
       name "James"
 
-      after(:create) do |person| 
-        person.add_role("Dealer") 
+      after(:create) do |person|
+        person.add_role("Dealer")
       end
     end
   end
