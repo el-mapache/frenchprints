@@ -1,40 +1,46 @@
 = render_errors(@person)
 
-.span10.well
-  = form_for [:admin, @person] do |f|
+.span10
+  = form_for [:admin, build_media_for(@person)] do |f|
 
-    = control_group(f, :text_field, :name, {class: "span4", placeholder: "Pierre Boulez"})
+    .grid-spacing
+      %h4
+        Personal Information
 
-    .control-group
-      = f.label :sex, class: "control-label"
-      .controls
-        = f.select :sex, options_for_select([["Male", "M"], ["Female", "F"], ["Unkown", "U"], ["Other", "O"]], @person.sex.nil? ? "U" : @person.sex), class: "span2"
+      = control_group(f, :text_field, :name, {class: "span4", placeholder: "Pierre Boulez"})
 
-    = control_group(f, :text_area, :bio, {class: "span5", size: "14x10", placeholder: "Born in a small cave on the banks of the river seine, blah blah....and so forth"})
-    = control_group(f, :text_field, :blurb, {class: "span4", size: "3x3", placeholder: "Composer, diletante"})
+      .control-group
+        = f.label :sex, class: "control-label"
+        .controls
+          = f.select :sex, options_for_select([["Male", "M"], ["Female", "F"], ["Unkown", "U"], ["Other", "O"]], @person.sex.nil? ? "U" : @person.sex), class: "span2"
 
-    .control-group
-      = f.label :roles, class: "control-label"
-      .controls
-        %em 
-          Add additional roles here
-        %ul
-          - Role.all.each do |role|
-            %li
-              = check_box_tag "person[role_ids][]", role.id, @person.roles.include?(role)
-              = role.name
-    %hr
-    %div
+      = control_group(f, :text_area, :bio, {class: "span5", size: "14x10", placeholder: "Born in a small cave on the banks of the river seine, blah blah....and so forth"})
+      = control_group(f, :text_field, :blurb, {class: "span4", size: "3x3", placeholder: "Composer, diletante"})
+
+      .control-group
+        = f.label :roles, class: "control-label"
+        .controls
+          %em 
+            Add additional roles here
+          %ul
+            - Role.all.each do |role|
+              %li
+                = check_box_tag "person[role_ids][]", role.id, @person.roles.include?(role)
+                = role.name
+
+    = render "admin/partials/medium_fields", f: f, resource: @person
+
+    .grid-spacing
       .control-group.info
         - if @person.new_record?
           %em.help-inline
             You may add more events after saving this record.
       .accordion#location-accordion
-        .accordion-group
-          .accordion-heading.alert.alert-info{style: "margin-bottom: 0px"}
+        %div
+          %div{style: "margin-bottom: 0px"}
             %h4.accordion-toggle{data: {toggle: "collapse", parent: "location-accordion", target: "#events"}}
               Locations and Events
-          %div#events.accordion-body.collapse
+          %div#events.collapse
             = f.fields_for :locations do |builder|
               = render "admin/partials/location_fields", f: builder
 

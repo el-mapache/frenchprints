@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe Article do
+
   context "accessibility" do
     it { should allow_mass_assignment_of :date_published }
     it { should allow_mass_assignment_of :journal }

@@ -1,3 +1,6 @@
+# Taken straight from the geocoder gem docs.
+#
+# Lots of magic
 module Geocoder
   module Lookup
     class Base

@@ -1,7 +1,7 @@
 = render_errors(@gallery)
 
 .span10
-  = form_for [:admin, @gallery] do |f|
+  = form_for [:admin, build_media_for(@gallery)] do |f|
 
     = control_group(f, :text_field, :name)
     - if @gallery.new_record?
@@ -28,6 +28,9 @@
             %li
               = link_to ex.name, admin_gallery_exhibition_path(@gallery, ex)
         = link_to "Add an exhibition", new_admin_gallery_exhibition_path(@gallery)
+
+    = render "admin/partials/medium_fields", f: f, resource: @gallery
+
     %br
     .controls
       = f.submit "Save", class: "btn btn-primary"

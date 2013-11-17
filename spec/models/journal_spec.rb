@@ -1,6 +1,10 @@
 require 'spec_helper'
 
 describe Journal do
+  context "has_media" do
+    include_context "has_media"
+  end
+
   context "accessibility" do
     it { should allow_mass_assignment_of :publication_run }
     it { should allow_mass_assignment_of :title }

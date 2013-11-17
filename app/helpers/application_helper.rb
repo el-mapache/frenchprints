@@ -21,5 +21,12 @@ module ApplicationHelper
 
     link_to(name, "#", class: "add-fields", data: { id: id, fields: fields.gsub("\n", "")})
   end
+
+  def build_media_for(resource)
+    return unless resource.respond_to?(:media)
+    resource.media.build if resource.media.empty?
+
+    resource
+  end
 end
 

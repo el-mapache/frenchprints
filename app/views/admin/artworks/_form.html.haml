@@ -1,16 +1,21 @@
 = render_errors(@artwork)
 
-.span10.well
-  = form_for [:admin, :person, @artwork] do |f|
+.span10
+  = form_for [:admin, :person, build_media_for(@artwork)] do |f|
     %div
-      %h5 Artist
+      %h4 Artist
       = @artwork.artist.name
     %br
 
-    = control_group(f, :text_field, :title)
-    = control_group(f, :text_field, :medium)
-    = control_group(f, :text_field, :dimensions)
-    = render "admin/partials/date_picker", f: f, attr: "release_date"
+    .grid-spacing
+      %h4 
+        Artwork information
+      = control_group(f, :text_field, :title)
+      = control_group(f, :text_field, :medium)
+      = control_group(f, :text_field, :dimensions)
+      = render "admin/partials/date_picker", f: f, attr: "release_date"
+
+    = render "admin/partials/medium_fields", f: f, resource: @artwork
 
     %br
     .control-group

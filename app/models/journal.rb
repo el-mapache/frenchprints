@@ -10,7 +10,7 @@ class Journal < ActiveRecord::Base
 
   has_many :articles
 
-  has_many :media, as: :imagable
+  has_media
 
   validates :title, presence: true
 

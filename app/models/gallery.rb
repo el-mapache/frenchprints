@@ -8,7 +8,7 @@ class Gallery < ActiveRecord::Base
   accepts_nested_attributes_for :personnel_histories
 
   has_many :exhibitions, dependent: :delete_all
-  has_many :media, as: :imagable
+  has_media
 
   validates :name, presence: true
 end

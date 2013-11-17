@@ -1,6 +1,10 @@
 require 'spec_helper'
 
 describe Artwork do
+  context "has_media" do
+    include_context "has_media"
+  end
+
   context "accessibility" do
     it { should allow_mass_assignment_of :artist_id }
     it { should allow_mass_assignment_of :dimensions }

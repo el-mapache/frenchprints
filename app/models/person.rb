@@ -22,7 +22,9 @@ class Person < ActiveRecord::Base
   has_many :exhibitions, through: :exhibitions_artists
 
   has_many :galleries
-  has_many :media, as: :imagable
+
+  # ActiveRecord extension
+  has_media
 
   # Validations
   validates :name, presence: true, uniqueness: true
