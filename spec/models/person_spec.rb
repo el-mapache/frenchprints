@@ -12,6 +12,7 @@ describe Person do
     it { should allow_mass_assignment_of :sex }
     it { should allow_mass_assignment_of :role_ids }
     it { should allow_mass_assignment_of :locations_attributes }
+    it { should allow_mass_assignment_of :representations_attributes }
     it { should_not allow_mass_assignment_of :id }
   end
 
@@ -30,6 +31,7 @@ describe Person do
     it { should have_many :artworks }
     it { should have_many :locations }
     it { should accept_nested_attributes_for :locations }
+    it { should accept_nested_attributes_for :representations }
     it { should have_many :authors_articles }
     it { should have_many(:articles).through(:authors_articles) }
     it { should have_many :exhibitions_artists }
@@ -121,13 +123,13 @@ describe Person do
       let(:artiste) { create(:person, name: "Filippo Marinetti") }
 
       it "adds an error if the representor isn't a dealer" do
-        artiste.represent(@person, Date.yesterday, Date.tomorrow)
+        artiste.represent(@person.id, Date.yesterday, Date.tomorrow)
         artiste.errors.should_not be_nil
       end
 
       it "adds a representation between dealer and artist" do
         @person.add_role("Dealer")
-        @person.represent(artiste, Date.yesterday, Date.tomorrow)
+        @person.represent(artiste.id, Date.yesterday, Date.tomorrow)
         @person.representees.count.should be(1)
       end
     end
@@ -159,8 +161,8 @@ describe Person do
 
       describe ".representatives" do
         it "fetches all representatives for a given person" do
-          dealer.represent(painter, Date.yesterday, Date.tomorrow) 
-          sothebys.represent(painter, Date.yesterday, Date.tomorrow) 
+          dealer.represent(painter.id, Date.yesterday, Date.tomorrow) 
+          sothebys.represent(painter.id, Date.yesterday, Date.tomorrow) 
           painter.representative.count.should be(2)
         end
 

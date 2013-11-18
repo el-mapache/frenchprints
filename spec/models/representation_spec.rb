@@ -5,7 +5,7 @@ describe Representation do
     it { should allow_mass_assignment_of :start_date }
     it { should allow_mass_assignment_of :end_date }
     it { should allow_mass_assignment_of :representative }
-    it { should allow_mass_assignment_of :representee }
+    it { should allow_mass_assignment_of :represented_id }
     it { should_not allow_mass_assignment_of :id }
   end
 
@@ -15,7 +15,7 @@ describe Representation do
   end
 
   context "validations" do
-    it { should validate_presence_of :representee }
+    it { should validate_presence_of :represented_id }
     it { should validate_presence_of :representative }
     it { should validate_presence_of :start_date }
     it { should validate_presence_of :end_date }

@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe ExhibitionsArtist do
   context "accessibility" do
-    it { should allow_mass_assignment_of :artist_id }
+    it { should allow_mass_assignment_of :person_id }
     it { should allow_mass_assignment_of :exhibition_id }
     it { should_not allow_mass_assignment_of :id }
   end
@@ -13,7 +13,7 @@ describe ExhibitionsArtist do
   end
 
   context "validations" do
-    it { should validate_presence_of :artist_id }
+    it { should validate_presence_of :person_id }
     it { should validate_presence_of :exhibition_id }
   end
 end

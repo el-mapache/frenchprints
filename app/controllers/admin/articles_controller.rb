@@ -32,13 +32,14 @@ class Admin::ArticlesController < Admin::CrudController
   end
 
   def update
-    @article_service = ArticleService.new(@article)
+    article_service = ArticleService.new(@article)
+    @article = article_service.create_or_update(params)
 
     respond_to do |f|
-      if @article_service.create_or_update(params)
+      if @article.save!
         f.html { redirect_to admin_articles_path, notice: "Record updated successfully." }
       else
-        f.html { render "edit", error: @article_service.article.errors.full_messages }
+        f.html { render "edit", error: @article.errors.full_messages }
       end
     end
   end

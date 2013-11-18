@@ -4,7 +4,7 @@ describe Admin::ArticlesController do
   login_admin
 
   let(:journal) { create(:journal) }
-  let(:person) { create(:person) }
+  let(:person) { create(:person, name: "James Beard") }
   let(:article) { create(:article) }
 
   describe "GET 'index'" do
@@ -93,6 +93,7 @@ describe Admin::ArticlesController do
         context "success" do
 
           before :each do
+            @artwork ||= create(:artwork)
             post :create, person_id: person,
               journal: {
                 title: journal.title
@@ -104,6 +105,10 @@ describe Admin::ArticlesController do
               },
               authors_articles_attributes: {
                 person_id: person.id
+              },
+              subjects_attributes: {
+                subjectable_type: "artworks",
+                subjectable_id: @artwork.id
               }
           end
 
@@ -157,6 +162,7 @@ describe Admin::ArticlesController do
     end 
 
     it "populates the flash with a success notice" do
+      delete :destroy, id: article
       flash[:notice].should_not be_nil
     end
   end

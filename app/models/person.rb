@@ -62,7 +62,7 @@ class Person < ActiveRecord::Base
 
   # For whatever reason this finder wasnt working by default
   def representative
-    Person.find_by_sql(["SELECT `people`.* FROM `people` as p INNER JOIN `representations` as r ON `p`.`id` = `r`.`person_id` WHERE `r`.`represented_id` = ?", id])
+    Person.find_by_sql(["SELECT `p`.* FROM `people` as p INNER JOIN `representations` as r ON `p`.`id` = `r`.`person_id` WHERE `r`.`represented_id` = ?", id])
   end
 
   # Build Associations

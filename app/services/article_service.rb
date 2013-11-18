@@ -10,17 +10,17 @@ class ArticleService
     person = Person.where(params[:person]).first_or_initialize
 
     if params[:article][:subjects_attributes]
-      subjects = params[:article][:subjects_attributes]
+      subjects = normalize_subject_type(params[:article][:subjects_attributes])
       params[:article].delete(:subjects_attributes)
-
-      article_params = params[:article].merge!({
-        journal: journal, 
-        subjects_attributes: normalize_subject_type(subjects)
-      })
     end
 
+    article_params = params[:article].merge!({
+      journal: journal, 
+      subjects_attributes: subjects.nil? ? {} : subjects
+    })
+
     # If the article object getting passed in is a new record,
-    # remake it with the form attributes, else, update the existing 
+    # remake it with the form attributes, else, update the existing
     # record's attributes
     if @article.new_record?
       @article = Article.new(article_params)
@@ -37,8 +37,12 @@ class ArticleService
     @article
   end
 
-  # this doesnt save the original
-  # Normalize the subjects field for our association
+  # Normalize the subjects field for our association by
+  # taking the plural association name sent by the form and putting
+  # into into the format rails expect for polymorphism.
+  #
+  # Ex. "articles" becomes "Article
+  #
   def normalize_subject_type(subject_hash)
     subject_hash.each do |key, subject|
       subject["subjectable_type"] = subject["subjectable_type"].singularize.capitalize!
