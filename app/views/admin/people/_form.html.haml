@@ -38,8 +38,10 @@
       .accordion#location-accordion
         %div
           %div{style: "margin-bottom: 0px"}
-            %h4.accordion-toggle{data: {toggle: "collapse", parent: "location-accordion", target: "#events"}}
+            %h4.pull-left.accordion-toggle{data: {toggle: "collapse", parent: "location-accordion", target: "#events"}}
               Locations and Events
+              %i.icon-circle-arrow-down{style: "margin-left: 10px"}
+          .clearfix
           %div#events.collapse
             = f.fields_for :locations do |builder|
               = render "admin/partials/location_fields", f: builder
@@ -54,6 +56,13 @@
     - if !@person.new_record? && @person.all_roles.include?("Artist")
       %div
         = link_to "Add a work of art", new_admin_person_artwork_path(@person)
+    - if !@person.new_record? && @person.all_roles.include?("Dealer")
+      .grid-spacing
+        %h4
+          Representees
+        = f.fields_for :representations do |fr|
+          = render "admin/partials/representation_fields", f: fr
+        = link_to_add_fields("Add a representee", f, :representations)
 
     %br
     .control-group

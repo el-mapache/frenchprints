@@ -1,6 +1,11 @@
 class Admin::RepresentationsController < Admin::CrudController
   skip_before_filter :create
 
+  def new
+    @person = Person.find(params[:person_id])
+    @artists = Person.all_with_role("Artist").map { |p| [p.name, p.id] }
+  end
+
   def create
     @person = Person.find(params[:person_id])
 

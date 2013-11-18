@@ -1,0 +1,6 @@
+.grid-spacing
+  = f.select :represented_id, Person.all_with_role("Artist").map { |p| [p.name, p.id] }, {}, {class: "chosen-subjects span5", data: {type: "chosen-select" }}
+  .grid-spacing
+    = render "admin/partials/date_picker", f: f, attr: "start_date"
+    = render "admin/partials/date_picker", f: f, attr: "end_date"
+

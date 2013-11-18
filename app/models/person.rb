@@ -1,6 +1,7 @@
 class Person < ActiveRecord::Base
   attr_accessible :bio, :name, :blurb, :role_ids,
-                  :locations_attributes, :sex
+                  :locations_attributes, :sex,
+                  :representations_attributes
 
   # Associations
   has_many :representations, dependent: :destroy
@@ -24,7 +25,9 @@ class Person < ActiveRecord::Base
   # ActiveRecord extension
   has_media
 
-  accepts_nested_attributes_for :roles, :locations
+  accepts_nested_attributes_for :roles
+  accepts_nested_attributes_for :locations, reject_if: :all_blank
+  accepts_nested_attributes_for :representations, reject_if: :all_blank
 
   # Validations
   validates :name, presence: true, uniqueness: true

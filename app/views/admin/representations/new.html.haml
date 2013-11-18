@@ -1,0 +1,16 @@
+.row
+  %h2 
+    Represent artists
+  = link_to "Back", admin_person_path(@person), class: "btn"
+  %br
+  %br
+  .row
+    .span10
+      %h4
+        Choose artists for #{@person.name} to represent.
+      = form_for [:admin, @person, @person.representations.build] do |f|
+        = render "admin/partials/representation_fields", f: f
+        = link_to_new_fields("Add Representee", Representation)
+
+        .grid-spacing
+          = f.submit "Submit", class: "btn btn-primary"

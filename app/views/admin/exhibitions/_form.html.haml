@@ -10,7 +10,7 @@
     .grid-spacing
       %h4 
         Organizer
-      = control_group(f, :text_field, :person_id, {value: "#{@exhibition.organized_by}", placeholder: "Begin typing to find a person", autocomplete: "off", data: {provide: "typeahead", source: Person.all}})
+      = f.select :person_id, Person.all.map {|p| [p.name, p.id] }, {}, {class: "chosen-subjects span5", data: {type: "chosen-select" }}
 
     .grid-spacing
       %h4

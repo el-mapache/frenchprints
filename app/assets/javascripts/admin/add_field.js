@@ -9,5 +9,10 @@ $(function() {
     $this.before($this.data('fields').replace(regexp, time))
 
     $("input.start-date, input.end-date").datepicker();
+
+    var chosen = $("[data-type='chosen-select']")
+    if (chosen.length) {
+      chosen.chosen({disable_search_threshold: 10}); 
+    }
   });
 });
