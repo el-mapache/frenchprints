@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131116175933) do
+ActiveRecord::Schema.define(:version => 20131121042518) do
 
   create_table "articles", :force => true do |t|
     t.string   "title",          :null => false
@@ -145,6 +145,16 @@ ActiveRecord::Schema.define(:version => 20131116175933) do
     t.string   "subjectable_type"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
+  end
+
+  create_table "transactions", :force => true do |t|
+    t.text     "description"
+    t.integer  "artwork_id"
+    t.integer  "buyer_id"
+    t.integer  "seller_id"
+    t.date     "sold_on"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "users", :force => true do |t|

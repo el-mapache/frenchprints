@@ -45,3 +45,4 @@ class Article < ActiveRecord::Base
     journal.title
   end
 end
+
