@@ -27,16 +27,19 @@ describe Transaction do
       dealer = create(:dealer)
       buyer = create(:person, name: "Billy Blanks")
 
-      valid_sale = Transaction.create({artwork_id: artwork.id,
-                                       seller_id: dealer.id,
-                                       buyer_id: buyer.id,
-                                       sold_on: Date.today})
-      valid_sale.should be_valid
+      Transaction.create({
+        artwork_id: artwork.id,
+        seller_id: dealer.id,
+        buyer_id: buyer.id,
+        sold_on: Date.today
+      }).should be_valid
 
-      Transaction.create({artwork_id: artwork.id,
-                                       seller_id: dealer.id,
-                                       buyer_id: buyer.id,
-                                       sold_on: Date.today}).should_not be_valid
+      Transaction.create({
+        artwork_id: artwork.id,
+        seller_id: dealer.id,
+        buyer_id: buyer.id,
+        sold_on: Date.today
+      }).should_not be_valid
 
       Transaction.create({
         artwork_id: artwork.id,
@@ -47,3 +50,4 @@ describe Transaction do
     end
   end
 end
+

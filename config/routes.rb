@@ -7,7 +7,15 @@ FrenchPrint::Application.routes.draw do
     get "/" => "home#index"
 
     resources :articles, only: [:index, :destroy]
+
     resources :artworks, only: [:index, :destroy]
+
+    get "transactions"                    => "transactions#index"
+    get "transactions/new/:artowrk_id"    => "transactions#new"
+    post "transactions/:artwork_id"       => "transactions#create"
+    delete "transactions/:transaction_id" => "transactions#destroy"
+
+
     resources :subjects, only: [:destroy]
     resources :personnel_histories
 
