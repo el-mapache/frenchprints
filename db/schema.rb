@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131121042518) do
+ActiveRecord::Schema.define(:version => 20131124230839) do
 
   create_table "articles", :force => true do |t|
     t.string   "title",          :null => false
@@ -93,6 +93,15 @@ ActiveRecord::Schema.define(:version => 20131121042518) do
     t.string   "imagable_type"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
+  end
+
+  create_table "ownerships", :force => true do |t|
+    t.integer  "artwork_id"
+    t.integer  "person_id"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "people", :force => true do |t|

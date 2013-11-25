@@ -16,6 +16,7 @@ describe Artwork do
 
   context "associations" do
     it { should belong_to :artist }
+    it { should have_many :transactions }
   end
 
   context "validations" do

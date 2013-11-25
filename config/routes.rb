@@ -11,9 +11,9 @@ FrenchPrint::Application.routes.draw do
     resources :artworks, only: [:index, :destroy]
 
     get "transactions"                    => "transactions#index"
-    get "transactions/new/:artowrk_id"    => "transactions#new"
+    get "transactions/new/:artwork_id"    => "transactions#new"
     post "transactions/:artwork_id"       => "transactions#create"
-    delete "transactions/:transaction_id" => "transactions#destroy"
+    delete "transactions/:id" => "transactions#destroy"
 
 
     resources :subjects, only: [:destroy]
