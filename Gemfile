@@ -6,10 +6,9 @@ gem "devise"
 gem "geocoder"
 gem "carrierwave"
 gem "mini_magick"
+gem 'thin'
 
 group :development do
-  gem 'debugger'
-  gem 'thin'
 end
 
 group :test do
@@ -24,6 +23,7 @@ end
 
 group :production do
   gem 'pg'
+  gem 'rails_12factor'
 end
 
 # Gems used only for assets and not required
@@ -40,13 +40,6 @@ gem 'jquery-rails'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
-# To use Jbuilder templates for JSON
-# gem 'jbuilder'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano'
-
 # To use debugger
+#
+ruby '2.0.0'
