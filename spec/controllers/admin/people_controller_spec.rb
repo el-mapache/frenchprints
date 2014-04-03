@@ -58,7 +58,7 @@ describe Admin::PeopleController do
 
       it "shows the requested person" do
         p = assigns(:person)
-        p.should eql(@person)
+        p.should be_instance_of PersonPresenter
       end
     end
 

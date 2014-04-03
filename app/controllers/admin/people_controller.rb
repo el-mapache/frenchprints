@@ -15,6 +15,7 @@ class Admin::PeopleController < Admin::CrudController
   end
 
   def show
+    @person = PersonPresenter.new(@person)
   end
 
   def create

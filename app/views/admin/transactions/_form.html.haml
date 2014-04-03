@@ -1,0 +1,9 @@
+= render_errors(@transaction)
+- @people = Person.all
+
+.span10
+  = form_for [:admin, :artwork, @transaction] do |f|
+
+    = f.select :buyer_id, @people.map { |p| [p.name, p.id] }, {}, {class: "chosen-subjects span5", data: {type: "chosen-select" }}
+    = f.select :seller_id, @people.map { |p| [p.name, p.id] }, {}, {class: "chosen-subjects span5", data: {type: "chosen-select" }}
+    = render "admin/partials/date_picker", f: f, attr: "sold_on"

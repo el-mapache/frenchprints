@@ -1,5 +1,6 @@
 class Transaction < ActiveRecord::Base
-  attr_accessible :artwork_id, :buyer_id, :description, :seller_id, :sold_on
+  attr_accessible :artwork_id, :buyer_id, :description, :seller_id, :sold_on,
+                  :buyer, :seller, :artwork
 
   belongs_to :artwork
   belongs_to :buyer, class_name: "Person", foreign_key: :buyer_id

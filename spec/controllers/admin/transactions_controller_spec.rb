@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe Admin::TransactionsController do
   login_admin
+
   let(:artwork) { create(:artwork) }
   let(:dealer) { create(:dealer) }
   let(:buyer) { create(:person, name: "Richee McGee") }
@@ -43,22 +44,33 @@ describe Admin::TransactionsController do
   describe "post #create" do
 
     context "success" do
-      before :each do
-        @count = Transaction.all.count
-        post 'create', artwork_id: artwork.id, transaction: {
-          buyer_id: buyer.id, seller_id: dealer.id, sold_on: Date.today
-        }
+      it "persists a new transaction" do
+        lambda do
+          post 'create', artwork_id: artwork.id, transaction: {
+            buyer_id: buyer.id, seller_id: dealer.id, sold_on: Date.today
+          }
+        end.should change(Transaction, :count).by 1
       end
 
-      it "persists a new transaction" do
-        Transaction.all.count.should eql(@count+1)
+      it "creates ownership records" do
+        lambda do
+          post 'create', artwork_id: artwork.id, transaction: {
+            buyer_id: buyer.id, seller_id: dealer.id, sold_on: Date.today
+          }
+        end.should change(Ownership, :count).by 1
       end
 
       it "redirects to the transaction index" do
+        post 'create', artwork_id: artwork.id, transaction: {
+          buyer_id: buyer.id, seller_id: dealer.id, sold_on: Date.today
+        }
         response.should redirect_to admin_transactions_path
       end
 
       it "populates the flash notice" do
+        post 'create', artwork_id: artwork.id, transaction: {
+          buyer_id: buyer.id, seller_id: dealer.id, sold_on: Date.today
+        }
         flash[:notice].should_not be_nil
       end
     end

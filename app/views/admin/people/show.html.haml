@@ -16,11 +16,11 @@
   %div
     %h4
       Birth
-    = @person.birth.start_date.to_s(:long)
+    = @person.birth
   %div
     %h4
       Death
-    = @person.death.start_date.to_s(:long)
+    = @person.death
 
 - @person.roles.each do |role|
   = render "application/roles/#{role.name.downcase.to_s}" rescue nil

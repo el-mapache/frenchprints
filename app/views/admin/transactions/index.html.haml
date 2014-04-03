@@ -1,2 +1,18 @@
-%h1 Admin::Transactions#index
-%p Find me in app/views/admin/transactions/index.html.haml
+.row
+  %h2 Transactions
+  %em New transactions can be added through an artwork record.
+  .row
+    %br
+    %br
+    %br
+    %table.table.table-bordered.table-striped.table-hover.span10
+      %thead
+        %tr
+          %th Buyer
+          %th Seller
+          %th Artwork
+          %th Sold On
+          %th Delete
+      %tbody
+        - @transactions.each do |t|
+          = render "transaction", transaction: t

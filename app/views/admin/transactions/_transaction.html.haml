@@ -1,0 +1,11 @@
+%tr
+  %td
+    = transaction.buyer.name
+  %td
+    = transaction.seller.name
+  %td
+    = transaction.artwork.title
+  %td
+    = transaction.sold_on
+  %td
+    = link_to "Delete", admin_transactions_path(transaction), data: { confirm: "Are you sure?" }, method: :delete

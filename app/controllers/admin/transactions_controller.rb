@@ -1,6 +1,6 @@
-class Admin::TransactionsController < ApplicationController
+class Admin::TransactionsController < Admin::AdminController
   def index
-    @transactions = Transaction.all
+    @transactions = Transaction.includes(:artwork, :buyer, :seller).all
   end
 
   def new
@@ -8,10 +8,9 @@ class Admin::TransactionsController < ApplicationController
   end
 
   def create
-    @transaction = Artwork.find(params[:artwork_id]).transactions.build(params[:transaction])
-
+    @transaction = OwnershipRecordService.new(params).create_transaction
     respond_to do |f|
-      if @transaction.save
+      if @transaction.valid?
         f.html { redirect_to admin_transactions_path, notice: "Transaction successfully created" }
       else
         f.html { render "new", error: @transaction.errors.full_messages }
