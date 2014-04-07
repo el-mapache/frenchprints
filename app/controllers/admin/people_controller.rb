@@ -10,8 +10,6 @@ class Admin::PeopleController < Admin::CrudController
   end
 
   def new
-    @birth = @person.locations.build(event_name: "birth")
-    @death = @person.locations.build(event_name: "death")
   end
 
   def show

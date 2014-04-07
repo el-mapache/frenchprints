@@ -13,6 +13,7 @@ module ApplicationHelper
     link_to(name, "#", class: "add-fields", data: { id: id, fields: fields.gsub("\n", "")})
   end
 
+  # For making non associated new fields
   def link_to_new_fields(name, klass)
     new_object = klass.new
     id = new_object.object_id

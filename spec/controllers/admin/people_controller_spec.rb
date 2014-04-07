@@ -28,17 +28,6 @@ describe Admin::PeopleController do
       expect { assigns(:person) }.to_not be_nil
     end
 
-    it "creates a new birth record" do
-      birth = assigns(:birth)
-      birth.should_not be_nil
-      birth.event_name.should eql("birth")
-    end
-
-    it "creates a new death record" do
-      death = assigns(:death)
-      death.should_not be_nil
-      death.event_name.should eql("death")
-    end
   end
 
   context "resources requiring an id" do

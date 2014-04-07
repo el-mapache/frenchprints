@@ -4,9 +4,10 @@ class Artwork < ActiveRecord::Base
   belongs_to :artist, class_name: "Person", foreign_key: :artist_id
 
   has_media
+
   has_many :transactions, dependent: :destroy
   has_many :ownerships
 
-  validates :title, :medium, :release_date, :artist_id, presence: true
+  validates :title, :medium, :release_date, presence: true
   validates :artist_id, numericality: true
 end

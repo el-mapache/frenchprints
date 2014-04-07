@@ -14,8 +14,8 @@
         .controls
           = f.select :sex, options_for_select([["Male", "M"], ["Female", "F"], ["Unkown", "U"], ["Other", "O"]], @person.sex.nil? ? "U" : @person.sex), class: "span2"
 
-      = control_group(f, :text_area, :bio, {class: "span5", size: "14x10", placeholder: "Born in a small cave on the banks of the river seine, blah blah....and so forth"})
-      = control_group(f, :text_field, :blurb, {class: "span4", size: "3x3", placeholder: "Composer, diletante"})
+      = control_group(f, :text_area, :bio, {class: "span5", size: "14x10", placeholder: "Biography of this person."})
+      = control_group(f, :text_field, :blurb, {class: "span4", size: "3x3", placeholder: "Should be a short description(~140 characters)."})
 
       .control-group
         = f.label :roles, class: "control-label"
@@ -33,20 +33,16 @@
     .grid-spacing
       .control-group.info
         - if @person.new_record?
-          %em.help-inline
-            You may add more events after saving this record.
-      .accordion#location-accordion
-        %div
-          %div{style: "margin-bottom: 0px"}
-            %h4.pull-left.accordion-toggle{data: {toggle: "collapse", parent: "location-accordion", target: "#events"}}
-              Locations and Events
-              %i.icon-circle-arrow-down{style: "margin-left: 10px"}
-          .clearfix
-          %div#events.collapse
+          %b.alert.alert-warning
+            You may add locations and events after saving this record.
+        - else
+          %h4
+            Locations/Events
+          %div
             = f.fields_for :locations do |builder|
               = render "admin/partials/location_fields", f: builder
 
-      = link_to_add_fields("Add Location", f, :locations) unless @person.new_record?
+          = link_to_add_fields("Add an event", f, :locations)
 
     - if !@person.new_record? && @person.all_roles.include?("Writer")
       %div
