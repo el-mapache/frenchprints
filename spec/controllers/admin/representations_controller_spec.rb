@@ -46,7 +46,7 @@ describe Admin::RepresentationsController do
   describe "#destroy" do
     before :each do
       @rep = dealer.represent(
-        artist,
+        artist.id,
         Date.yesterday,
         Date.tomorrow
       )

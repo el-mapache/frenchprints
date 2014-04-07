@@ -80,7 +80,12 @@ class Person < ActiveRecord::Base
   # TODO/Note: The artist resource is not validated
   def represent(representee, start_date, end_date)
     return errors.add(:base, "Only dealers can represent someone.") unless has_role?("Dealer")
-    representations.create(represented_id: representee, start_date: start_date, end_date: end_date)
+
+    rep = representations.create(represented_id: representee, start_date: start_date, end_date: end_date)
+
+    save
+
+    rep
   end
 
   # Params should constitute a valid artwork model

@@ -1,6 +1,5 @@
 class Representation < ActiveRecord::Base
-  attr_accessible :current, :end_date, :represented_id, :representative, 
-                  :start_date
+  attr_accessible :current, :end_date, :represented_id, :representative, :start_date
   
   # Associations 
   belongs_to :representee, class_name: "Person", foreign_key: :represented_id
