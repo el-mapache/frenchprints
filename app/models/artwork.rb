@@ -8,6 +8,6 @@ class Artwork < ActiveRecord::Base
   has_many :transactions, dependent: :destroy
   has_many :ownerships
 
-  validates :title, :medium, :release_date, presence: true
+  validates :artist_id, :title, :medium, :release_date, presence: true
   validates :artist_id, numericality: true
 end

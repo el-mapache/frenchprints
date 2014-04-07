@@ -23,7 +23,6 @@ describe Artwork do
     it { should validate_presence_of :title }
     it { should validate_presence_of :medium }
     it { should validate_presence_of :artist_id }
-    it { should validate_numericality_of :artist_id }
     it { should validate_presence_of :release_date }
   end
 end
