@@ -23,6 +23,15 @@ class Location < ActiveRecord::Base
     [street_address, city, country].compact.join(", ")
   end
 
+  # TODO clean this up/rename method
+  def date_range
+    result = ""
+    result << (start_date.nil? ? "Unknown" : start_date.to_s(:long) )
+    result << " and "
+    result << (end_date.nil? ? "Unknown" : end_date.to_s(:long) )
+    result
+  end
+
   private
 
   # We need a country and street at minimum to geocode
