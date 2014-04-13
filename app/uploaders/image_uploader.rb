@@ -1,13 +1,15 @@
 # encoding: utf-8
 
-class ImageUploader < CarrierWave::Uploader::Base
+class ImageUploader <  CarrierWave::Uploader::GoogleDrive 
   include CarrierWave::MiniMagick
 
   include Sprockets::Helpers::RailsHelper
   include Sprockets::Helpers::IsolatedHelper
 
-  storage :file
-  # storage :fog
+  google_login(Google.email.to_s)
+  google_password(Google.password.to_s)
+
+  storage :file if Rails.env == 'development'
 
   def extension_white_list
     %w(jpg jpeg gif png)
@@ -16,7 +18,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   def store_dir
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
-  
+
   version :thumbnail do
     process :resize_to_fill => [170,170]
   end
