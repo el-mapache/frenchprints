@@ -7,7 +7,7 @@ gem "geocoder"
 gem "carrierwave"
 gem "mini_magick"
 gem 'thin'
-gem 'carrierwave-google_drive'
+#gem 'carrierwave-google_drive', path: "/Users/primer/Documents/code/carrierwave-google_drive/"
 
 group :development do
 end
@@ -27,11 +27,6 @@ group :production do
   gem 'rails_12factor'
 end
 
-# Gems used only for assets and not required
-# in production environments by default.
-group :assets do
-end
-
 gem 'jquery-rails'
 
 gem "twitter-bootstrap-rails"
@@ -43,5 +38,5 @@ gem 'uglifier', '>= 1.0.3'
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
 # To use debugger
-#
+
 ruby '2.0.0'
