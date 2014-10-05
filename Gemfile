@@ -1,13 +1,11 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.14'
-gem "heroku"
 gem "devise"
 gem "geocoder"
 gem "carrierwave"
 gem "mini_magick"
 gem 'thin'
-#gem 'carrierwave-google_drive', path: "/Users/primer/Documents/code/carrierwave-google_drive/"
 
 group :development do
 end

@@ -173,7 +173,7 @@ describe Person do
 
       describe "#representees_during" do
         it "shows all representees of a dealer within supplied time frame"do
-          dealer.represent(painter, Date.yesterday, Date.tomorrow) 
+          dealer.represent(painter.id, Date.yesterday, Date.tomorrow) 
           dealer.representees_during(Date.yesterday, Date.tomorrow).length.should eq(1)
           dealer.representees_during(10.days.ago.to_date,Date.today).length.should eq(0)
         end

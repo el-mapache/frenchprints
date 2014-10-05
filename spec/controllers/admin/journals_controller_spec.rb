@@ -9,9 +9,9 @@ describe Admin::JournalsController do
       response.should be_success
     end
 
-    it "fetches an array of all people" do
+    it "fetches an array of all journals" do
       get "index"
-      expect { assigns(:people) }.to_not be_nil
+      expect { assigns(:journals) }.to_not be_nil
     end
   end
 

@@ -63,7 +63,9 @@ class Person < ActiveRecord::Base
 
   # For whatever reason this finder wasnt working by default
   def representative
-    Person.find_by_sql(["SELECT `p`.* FROM `people` as p INNER JOIN `representations` as r ON `p`.`id` = `r`.`person_id` WHERE `r`.`represented_id` = ?", id])
+    Person.find_by_sql([
+      "SELECT p.* FROM people as p INNER JOIN representations as r ON p.id = r.person_id WHERE r.represented_id = ?", id
+    ])
   end
 
   # Build Associations
@@ -82,9 +84,7 @@ class Person < ActiveRecord::Base
     return errors.add(:base, "Only dealers can represent someone.") unless has_role?("Dealer")
 
     rep = representations.create(represented_id: representee, start_date: start_date, end_date: end_date)
-
     save
-
     rep
   end
 
@@ -99,9 +99,9 @@ class Person < ActiveRecord::Base
 
   # This method provides date based searching
 
-  # See all of a dealers representees during a specific timeframe
+  # See all of a dealer's representees during a specific timeframe
   def representees_during(from, to)
-    representations.where("Date(start_date) >= ? AND DATE(end_date) <= ?", from, to)
+    representations.where("(start_date, end_date) OVERLAPS (?::DATE, ?::DATE)", from, to)
   end
 
   # Who represented a particular artist during a given timeframe
