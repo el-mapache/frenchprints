@@ -22,5 +22,10 @@
       Death
     = @person.death
 
-- @person.roles.each do |role|
-  = render "application/roles/#{role.name.downcase.to_s}" rescue nil
+%div
+  %h4
+    Roles
+  %ul
+    - @person.roles.each do |role|
+      %li= role.name
+      = render "application/roles/#{role.name.downcase.to_s}" rescue nil
