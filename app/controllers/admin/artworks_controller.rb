@@ -9,7 +9,8 @@ class Admin::ArtworksController < Admin::CrudController
   end
 
   def new
-    @artwork = Person.find(params[:person_id]).artworks.build
+    @artwork = Person.where(id: params[:person_id])
+                     .first.artworks.build
   end
 
   def show

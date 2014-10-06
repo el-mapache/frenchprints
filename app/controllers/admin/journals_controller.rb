@@ -13,7 +13,6 @@ class Admin::JournalsController < Admin::CrudController
   end
 
   def edit
-
   end
 
   def create

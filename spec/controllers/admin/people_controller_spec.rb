@@ -11,7 +11,7 @@ describe Admin::PeopleController do
 
     it "fetches an array of all people" do
       get "index"
-      expect { assigns(:people) }.to_not be_nil
+      expect(assigns(:people)).to_not be_nil
     end
   end
 
@@ -25,7 +25,7 @@ describe Admin::PeopleController do
     end
 
     it "creates a new person" do
-      expect { assigns(:person) }.to_not be_nil
+      expect(assigns(:person)).to_not be_nil
     end
 
   end

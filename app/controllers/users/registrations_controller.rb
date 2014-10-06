@@ -1,7 +1,7 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   def create
     build_resource(sign_up_params)
-    resource.update_attribute(:admin, true)
+    #resource.update_attribute(:admin, true)
 
     if resource.save
       set_flash_message :notice, :signed_up if is_navigational_format?

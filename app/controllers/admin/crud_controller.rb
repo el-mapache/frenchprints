@@ -49,7 +49,7 @@ class Admin::CrudController < Admin::AdminController
   def get_resource
     class_context = derive_class_context.singularize
 
-    instance_variable_set("@#{class_context.downcase}", class_context.constantize.find(params[:id]))
+    instance_variable_set("@#{class_context.downcase}", class_context.constantize.where(id: params[:id]).first)
   end
 
   # Create a new resource, initializing it with paramaters if they exist.

@@ -11,7 +11,7 @@ describe Admin::JournalsController do
 
     it "fetches an array of all journals" do
       get "index"
-      expect { assigns(:journals) }.to_not be_nil
+      expect(assigns(:journals)).to_not be_nil
     end
   end
 
@@ -25,7 +25,7 @@ describe Admin::JournalsController do
     end
 
     it "creates a new journal" do
-      expect { assigns(:journal) }.to_not be_nil
+      expect(assigns(:journal)).to_not be_nil
     end
   end
 

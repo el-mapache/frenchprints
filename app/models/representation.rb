@@ -1,3 +1,4 @@
+# Model represents a join between two person models, generally a dealer and an artist.
 class Representation < ActiveRecord::Base
   attr_accessible :current, :end_date, :represented_id, :representative, :start_date
   

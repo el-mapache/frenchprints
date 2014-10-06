@@ -5,7 +5,7 @@ class Exhibition < ActiveRecord::Base
   accepts_nested_attributes_for :locations
 
   has_many :exhibitions_artists
-  has_many :artists, through: :exhibitions_artists, source: :person, foreign_key: :person_id
+  has_many :artists, through: :exhibitions_artists, source: :artist, foreign_key: :person_id
 
   has_media
 

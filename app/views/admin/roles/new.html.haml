@@ -1,2 +1,15 @@
-%h1 Admin::Roles#new
-%p Find me in app/views/admin/roles/new.html.haml
+= render_errors(@role)
+
+.span10
+  = form_for :role do |f|
+    %div
+      %h4 Add a new Role
+    %br
+
+    .grid-spacing
+      = control_group(f, :text_field, :name)
+
+    %br
+    .control-group
+      .controls
+        = f.submit "Submit", class: "btn btn-primary"
