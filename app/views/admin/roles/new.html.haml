@@ -1,7 +1,7 @@
 = render_errors(@role)
 
 .span10
-  = form_for :role do |f|
+  = form_for [:admin, @role] do |f|
     %div
       %h4 Add a new Role
     %br

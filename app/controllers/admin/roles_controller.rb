@@ -5,9 +5,6 @@ class Admin::RolesController < Admin::CrudController
   def new
   end
 
-  def show
-  end
-
   def create
     respond_to do |f|
       if @role.save

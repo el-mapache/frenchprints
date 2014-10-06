@@ -1,2 +1,26 @@
-%h1 Admin::Roles#index
-%p Find me in app/views/admin/roles/index.html.haml
+%row
+  %h2 Roles
+  %p
+    %em 
+      New roles can be added
+    %a{href: "#{new_admin_role_path}"}
+      here
+  .row
+    %br
+    %br
+    %br
+    %table.table.table-bordered.table-striped.table-hover.span10
+      %thead
+        %tr
+          %th Name
+          %th Edit
+          %th Delete
+      %tbody
+        - @roles.each do |role|
+          %tr
+            %td
+              = role.name
+            %td
+              = link_to "Edit", edit_admin_role_path(role)
+            %td
+              = link_to "Delete", admin_role_path(role), data: { confirm: "Are you sure?" }, method: :delete
