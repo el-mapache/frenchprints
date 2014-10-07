@@ -29,3 +29,8 @@
     - @person.roles.each do |role|
       %li= role.name
       = render "application/roles/#{role.name.downcase.to_s}" rescue nil
+%div
+  %h4 Images
+  - @person.media.each do |img|
+    %div
+      %img{src: "#{img.image.thumb}", width: 160, height: 160}

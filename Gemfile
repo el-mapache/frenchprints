@@ -4,6 +4,7 @@ gem 'rails', '3.2.14'
 gem "devise"
 gem "geocoder"
 gem "carrierwave"
+gem 'fog'
 gem "mini_magick"
 gem 'thin'
 

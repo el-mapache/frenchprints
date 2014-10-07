@@ -1,6 +1,6 @@
 class PersonPresenter
   attr_reader :name, :blurb, :bio, :birth, :death, :roles,
-              :person
+              :person, :media
 
   def initialize(person)
     @person = person
@@ -10,6 +10,7 @@ class PersonPresenter
     @birth = has_birth_date
     @death = has_death_date
     @roles = @person.roles
+    @media = @person.media
   end
 
 

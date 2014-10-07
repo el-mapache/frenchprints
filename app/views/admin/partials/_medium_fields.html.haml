@@ -3,6 +3,6 @@
     Media
   - resource.media.each do |img|
     - unless img.new_record?
-      %img{src: "#{img.image.thumbnail}", width: 170, height: 170}
+      %img{src: "#{img.image.thumb}", width: 160, height: 160}
   = f.fields_for :media do |fm|
     = control_group(fm, :file_field, :image)
