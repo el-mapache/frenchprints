@@ -1,0 +1,141 @@
+Name,"Role (artist, curator, collector, dealer, printer, publisher, gallerist, critic)",Bio ID -- just the number on this row; it is to be used to link people across tables,"Life/Active Dates (fairly certain these are a separate model in the database, but I will handle that part)",Address,City,State,Zip Code,Country
+Arsène Alexandre,critic,1,1859-1937,,Paris,,,France
+Ancourt,printer,2,,83 rue du Faubourg Saint Denis,Paris,,,France
+Galerie Art Nouveau,gallery,3,1895-1903,27 rue de Provence,Paris,,,France
+Louis Le Barc de Boutteville,gallerist,4,died 1896,47 Rue Le Peletier,Paris,,,France
+Léonce Bénédite,"critic, curator",5,1859-1925,,Paris,,,France
+Henri Béraldi,"critic, collector",6,1849-1931,,Paris,,,France
+Albert Besnard,artist,7,1849-1934,,Paris,,,France
+Siegfried Bing,curator,8,1838-1905,,Paris,,,France
+Léon Blum,critic,9,,,Paris,,,France
+La Bodinière,gallery,10,circa 1893-94,"18, rue Saint Lazare",Paris,,,France
+Pierre Bonnard,artist,11,1867-1947,,Paris,,,France
+Bougerie and Co.,dealer,12,,,Paris,,,France
+Gustave Bourcard,"collector, critic",13,1846-1925,,Paris,,,France
+Boutet de Monvel,gallery,14,,"8, rue Tronchet",Paris,,,France
+Philippe Burty,"critic, curator, collector",15,1830-1890,,Paris,,,France
+Alfred Cadart,"publisher, dealer",16,1828-1875,,Paris,,,France
+Camis and Company,printer,17,,172 quai de Jemmapes,Paris,,,France
+Chaix et Cie,printer,18,,,Paris,,,France
+Champenois,printer,19,,66 boulevard Saint Michel,Paris,,,France
+Noël Clément-Janin,"critic, collector",20,1862-1947,,Paris,,,France
+Auguste Clot,,21,1858-1936,,Paris,,,France
+Auguste Delatre,"artist, printer, gallery",22,1822-1907,,Paris,,,France
+Loys Delteil,critic,23,1869-1927,,Paris,,,France
+Denman Tripp,gallery,24,,,Paris,,,France
+Desbois,dealer,25,,7 rue Laffitte,Paris,,,France
+Ducourtioux and Huillard,printer,26,,57 rue de Seine,Paris,,,France
+Pierre Duffau,dealer,27,,,Paris,,,France
+L. Dumont,dealer,28,,27 rue Laffitte,Paris,,,France
+Durand-Ruel,,29,,9 blvd de la Madeleine,Paris,,,France
+M. Geoffroy-Dechaume,collector,30,,,Paris,,,France
+Galerie Georges Petit,gallery,31,,Rue de Seze,Paris,,,France
+John Grand-Carteret,critic,32,1850-1927,,Paris,,,France
+Charles Hessèle,dealer,33,,13 rue Laffitte,Paris,,,France
+Kleinmann,dealer,34,,,Paris,,,France
+Galerie Laffitte,gallery,35,,"20, rue Laffitte",Paris,,,France
+Pierre Lechanteux,dealer,36,,65 rue Richelieu,Paris,,,France
+Jules Laforgue,critic,37,1860-1887,,Paris,,,France
+Paul Lemaire,printer,38,,,Paris,,,France
+Lemercier et cie.,printer,39,1837-,57 Rue de Seine,Paris,,,France
+Librairie Dorbon,dealer,40,,47 rue Le Peletier,Paris,,,France
+Léon Maillard,"collector, critic",41,,,Paris,,,France
+Ernest Maindron,"collector, critic",42,1838-1907,,Paris,,,France
+Maison d'Art Moderne,gallery,43,,25 galerie Vivienne,Paris,,,France
+G. de Malherbe and Co.,printer,44,,,Paris,,,France
+André Marty,"critic, publisher",45,,,Paris,,,France
+Roger Marx,"critic, collector, curator",46,1859-1913,,Paris,,,France
+André Mellerio,critic,47,1862-1943,,Paris,,,France
+Molines,dealer,48,,20 rue Laffitte,Paris,,,France
+Monrocq Frères,printer,49,,3 rue Suger,Paris,,,France
+Thadée Natanson,"publisher, critic, collector",50,1868-1951,,Paris,,,France
+Édouard Pelletan,publisher,51,1854-1912,125 boulevard Saint Germain,Paris,,,France
+Gustave Pellet,"publisher, collector, dealer",52,,Quai Voltaire 9,Paris,,,France
+Georges Pochet,collector,53,1843-1901,,Paris,,,France
+Hippolyte Prouté,dealer,54,,11 rue d’Ulm,Paris,,,France
+Victor Prouté,dealer,55,1854-1918,12 rue de Seine,Paris,,,France
+Galerie Rapp,gallery,56,,Champ de Mars,Paris,,,France
+La Revue Blanche,gallery,57,1889-1903,,Paris,,,France
+Edmond Sagot,dealer,58,1881,53 rue d'Argout,Paris,,,France
+Edmond Sagot,dealer,59,,18 Rue Guénégaud,Paris,,,France
+Edmond Sagot,dealer,60,,39 bis rue de Chateaudun,Paris,,,France
+Galerie Sagot-Le Garrec,gallery,61,,24 rue du Four,Paris,,,France
+Salle du Figaro,gallery,62,,rue Drouot,Paris,,,France
+Sapin,dealer,63,,3 rue Bonaparte,Paris,,,France
+Léon Schuck,collector,64,1857-1930,,Paris,,,France
+Henry Stern,printer,65,,,Paris,,,France
+Henri de Toulouse-Lautrec,artist,66,1864-1901,,Paris,,,France
+Félix Vallotton,artist,67,1865-1925,,Paris,,,France
+Eugène and Charles Verneau,"printer, dealer",68,,108 rue de la Folie Mericourt,Paris,,,France
+Eugène and Charles Verneau,"printer, dealer",69,1896,114 rue Oberkampf,Paris,,,France
+Ambroise Vollard,"collector, dealer, gallerist",70,1867-1939,"6, rue Laffitte",Paris,,,France
+Félix Buhot,artist,71,1847-1898,,Paris,,,France
+Eugène Grasset,artist,72,1841-1917,,Paris,,,France
+Henri Guerard,artist,73,1846-1897,,Paris,,,France
+Alexandre Lunois,artist,74,1863-1916,,Paris,,,France
+Odilon Redon,artist,75,1840-1916,,Paris,,,France
+Raoul Sertat,critic,76,,"33, rue du Dragon",Paris,,,France
+Théophile Steinlen,artist,77,1859-1923,,Paris,,,France
+Eugène Béjot,artist,78,1867-1931,,Paris,,,France
+Hermann-Paul,artist,79,1864-1940,,Paris,,,France
+Misia Natanson,collector,80,1872-1950,,Paris,,,France
+Félix Fénéon,critic,81,1861-1944,,Paris,,,France
+Julius Meier-Graefe,"critic, curator",82,1867-1935,,Berlin,,,Germany
+Alphonse Mucha,artist,83,1860-1939,,,,,
+Henri Fantin-Latour,artist,84,1836-1904,,Paris,,,
+Georges de Feure,artist,85,1868-1943,,Paris,,,
+Armand Point,artist,86,1860-1932,,Paris,,,
+Lucien Lévy-Dhurmer,artist,87,1865-1953,,Paris,,,
+Edmond Aman-Jean,artist,88,1858-1936,,Paris,,,
+Auguste Lepère,artist,89,1849-1918,,Paris,,,
+Pierre Puvis de Chavannes,artist,90,1824-1898,,Paris,,,
+Henri Martin,artist,91,1860-1943,,Paris,,,
+Félix Bracquemond,artist,92,1833-1914,,Paris,,,
+Edward Burne-Jones,artist,93,1833-1898,,London,,,England
+Adolphe Willette,artist,94,1857-1926,,Paris,,,
+Johan Jongkind,artist,95,1819-1891,,Paris,,,
+Auguste Rodin,artist,96,1840-1917,,Paris,,,
+Henri-Gabriel Ibels,artist,97,1867-1936,,Paris,,,
+Maximilien Luce,artist,98,1858-1941,,Paris,,,
+Frédéric-Auguste Cazals,artist,99,1865-1941,,Paris,,,
+Maurice Denis,artist,100,1870-1943,,Paris,,,
+Camille Pissarro,artist,101,1830-1903,,Paris,,,
+Lucien Pissarro,artist,102,1863-1944,,Paris,,,
+Paul Signac,artist,103,1863-1935,,Paris,,,
+Norbert Goeneutte,artist,104,1854-1894,,Paris,,,
+Félicien Rops,artist,105,1833-1898,,Paris,,,
+Henri-Gustave Jossot,artist,106,1866-1951,,Paris,,,
+James Ensor,artist,107,1860-1949,,,,,
+Henri Boutet,artist,108,1851-1919,,Paris,,,
+Mary Cassatt,artist,109,1844-1926,,Paris,,,
+Edgar Degas,artist,110,1834-1917,,Paris,,,
+Marcellin Desboutin,artist,111,1823-1902,,Paris,,,
+Alphonse Legros,artist,112,1837-1911,,Paris,,,
+Henry Somm,artist,113,1844-1907,,Paris,,,
+James Tissot,artist,114,1836-1902,,Paris,,,
+Francis Seymour Haden,"artist, collector",115,1818-1910,,London,,,
+Louis Anquetin,artist,116,1861-1932,,Paris,,,
+Émile Bernard,artist,117,1868-1941,,Paris,,,
+Eugène Delatre,artist,118,1864-1938,,Paris,,,
+Charles Dulac,artist,119,1865-1898,,Paris,,,
+René Philipon,collector,120,1870-1936,,Chevreuse,,,
+Pierre Roche,artist,121,1855-1922,,Paris,,,
+Robert de Domecy,collector,122,,,Paris,,,
+Henri-Marie Petiet,collector,123,1894-1980,,Paris,,,
+Rodolphe Bresdin,artist,124,1822-1885,,Bordeaux,,,
+Imprimerie d'Arts,publisher,125,1890s,23 rue du Cherche-Midi,Paris,,,
+Octave Uzanne,"critic, collector, curator",126,1851-1931,12 Quai Voltaire,Paris,,,
+Campbell Dodgson,"collector, critic",127,1867-1948,,London,,,
+Robert Danon,collector,128,,,Paris,,,
+Alfred Strölin,dealer,129,,,Paris,,,
+Jacques Doucet,collector,130,1853-1929,,Paris,,,
+Atherton Curtis,collector,131,1863-1910,,New York,,,
+Édouard Manet,artist,132,1832-1883,,Paris ,,,
+Alfred Beurdeley,collector,133,1847-1919,79 rue de Clichy,Paris ,,,
+Charles Meryon,artist,134,1821-1868,,Paris,,,
+André Barrier,collector,135,1870-1957,,Paris,,,
+Francis Edward Bliss,collector,136,1847-1930,,London,,,
+Edwin Alfred Seasongood,collector,137,1876-1953,,New York,,,
+Alfred Barrion,collector,138,1846-1903,,Bressuire,,,
+Charles Saunier,"collector, critic",139,1865-1941,,Paris,,,
+Emile Laffon,collector,140,1868-1931,,Paris,,,

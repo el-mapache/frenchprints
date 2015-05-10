@@ -3,12 +3,14 @@ CarrierWave.configure do |config|
   config.storage = Rails.env.development? ? :file : :fog
 #  config.s3_access_policy = :public_read
 
-  config.fog_credentials = {
-    :provider               => 'AWS',
-    :aws_access_key_id      => ENV['AWS_KEY'],
-    :aws_secret_access_key  => ENV['AWS_SECRET'],
-    :endpoint               => 'http://s3.amazonaws.com/'
-  }
+  if Rails.env.production?
+    config.fog_credentials = {
+      :provider               => 'AWS',
+      :aws_access_key_id      => ENV['AWS_KEY'],
+      :aws_secret_access_key  => ENV['AWS_SECRET'],
+      :endpoint               => 'http://s3.amazonaws.com/'
+    }
+  end
 
   config.fog_directory  = ENV['AWS_BUCKET']
   config.fog_public = true

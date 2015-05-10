@@ -1,0 +1,45 @@
+Artist,Print title,Year,Medium,Dimensions,Publisher,Print ID -- for internal purposes only; this is used to link prints across each table; think of it as a catalogue raisonné number)
+Alphonse Mucha,Cover illustration for L'Estampe moderne,1897-99,,,L'Estampe moderne,1
+Henri Fantin-Latour,,1897-98,,,L'Estampe moderne,2
+Georges de Feure,,1897-98,,,L'Estampe moderne,3
+Armand Point,,1897-98,,,L'Estampe moderne,4
+Lucien Lévy-Dhurmer,,1897-98,,,L'Estampe moderne,5
+Edmond Aman-Jean,,1897-98,,,L'Estampe moderne,6
+Auguste Lepère,,1897-98,,,L'Estampe moderne,7
+Pierre Puvis de Chavannes,,1897-98,,,L'Estampe moderne,8
+Henri Fantin-Latour,,1898-99,,,L'Estampe moderne,9
+Théophile Steinlen,,1898-99,,,L'Estampe moderne,10
+Henri Martin,,1898-99,,,L'Estampe moderne,11
+Eugène Grasset,,1898-99,,,L'Estampe moderne,12
+Félix Bracquemond,,1898-99,,,L'Estampe moderne,13
+Edward Burne-Jones,,1898-99,,,L'Estampe moderne,14
+Adolphe Willette,,1898-99,,,L'Estampe moderne,15
+Georges de Feure,Poster for Salon des Cent,,,,La Plume,16
+Jules Chéret,,1896-1897,,,L'Image,17
+Alphonse Mucha,Cover illustration for L'Image,1896-1897,,,L'Image,18
+Georges de Feure,Cover illustration for L'Image,1897,,,L'Image,19
+Albert Besnard,Dans les Etoiles,1897,,,L'Image,20
+Henri de Toulouse-Lautrec,Cover illustration for L'Image,1897,,,L'Image,21
+Eugène Grasset,Cover illustration for La Plume,1896,,,La Plume,22
+Alphonse Mucha,Cover illustration for La Plume,1897,,,La Plume,23
+Adolphe Willette,Illustration for La Plume,,,,La Plume,24
+Henri-Gabriel Ibels,Illustration for La Plume,,,,La Plume,25
+Henri de Toulouse-Lautrec,Illustration for La Plume,,,,La Plume,26
+Maimilien Luce,Illustration for La Plume,,,,La Plume,27
+Jules Chéret,Illustration for La Plume,,,,La Plume,28
+Frédéric-Auguste Cazals,Illustration for La Plume,,,,La Plume,29
+Maurice Denis,Illustration for La Plume,,,,La Plume,30
+Camille Pissarro,Illustration for La Plume,,,,La Plume,31
+Lucien Pissarro,Illustration for La Plume,,,,La Plume,32
+Paul Signac,Illustration for La Plume,,,,La Plume,33
+Odilon Redon,Illustration for La Plume,,,,La Plume,34
+Félicien Rops,Illustration for La Plume,,,,La Plume,35
+Henri-Gustave Jossot,Illustration for La Plume,,,,La Plume,36
+Henri-Gabriel Ibels,Poster for Salon des Cent,1894,,,La Plume,37
+Alphonse Mucha,Poster for Salon des Cent,1896,,,La Plume,38
+James Ensor,Poster for Salon des Cent,1897,,,La Plume,39
+Henri-Gustave Jossot,Poster for Salon des Cent,1894,,,La Plume,40
+Henri Boutet,Poster for Salon des Cent,1895,,,La Plume,41
+Frédéric-Auguste Cazals,Poster for Salon des Cent,1894,,,La Plume,42
+Hermann-Paul,Poster for Salon des Cent,1895,,,La Plume,43
+Eugène Grasset,Poster for Salon des Cent,1894,,,La Plume,44
